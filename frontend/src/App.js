@@ -1,11 +1,26 @@
+import React,{useEffect,useState} from "react";
+import { BrowserRouter ,Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 
+import Home from "./pages/Home"
 
 function App() {
   return (
-    <div>
-      <h1>hola</h1>
-    </div>
+    <BrowserRouter>
+    
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      
+      </Routes>
+      <ToastContainer
+          newestOnTop={false}
+          rtl={false}
+          pauseOnFocusLoss
+        />
+      <ToastContainer /> 
+
+    </BrowserRouter>
   );
 }
 
