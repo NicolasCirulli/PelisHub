@@ -3,16 +3,29 @@ import { BrowserRouter ,Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 
-import Home from "./pages/Home"
+import NavBarMain from './components/NavBar'
+import Footer from './components/Footer'
+
+import Inicio from "./pages/Inicio"
+import Peliculas from './pages/Peliculas'
+import Registro from './pages/Registro'
+import IniciarSesion from './pages/IniciarSesion'
+
 
 function App() {
   return (
     <BrowserRouter>
-    
+    <div className="container-fluid">
+      <NavBarMain/>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Inicio />}></Route>
+        <Route path="/Peliculas" element={<Peliculas />}></Route>
+        <Route path="/Registro" element={<Registro />}></Route>
+        <Route path="/IniciarSesion" element={<IniciarSesion />}></Route>
       
       </Routes>
+      <Footer/>
+    </div>
       <ToastContainer
           newestOnTop={false}
           rtl={false}
