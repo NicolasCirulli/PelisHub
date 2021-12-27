@@ -3,8 +3,8 @@ import { BrowserRouter ,Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 
-import NavBarMain from './components/NavBar'
-import Footer from './components/Footer'
+import NavBarMain from './components/NavBar/NavBar'
+import Footer from './components/Footer/Footer'
 
 import Inicio from "./pages/Inicio"
 import Peliculas from './pages/Peliculas'

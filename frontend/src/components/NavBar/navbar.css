@@ -1,0 +1,12 @@
+ .colorText{
+     color: white !important;
+ }
+
+ #basic-nav-dropdown{
+    color: white;
+}
+
+#responsive-navbar-nav{
+    display: flex;
+    justify-content: flex-end;
+}
