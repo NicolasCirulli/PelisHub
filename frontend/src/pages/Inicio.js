@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import CardPeliculas from '../components/CardPeliculas'
+import CardPeliculas from '../components/CardPeliculas/CardPeliculas'
 
 const Inicio = () => {
 

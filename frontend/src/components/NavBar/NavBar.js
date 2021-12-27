@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 
 
 const NavBarMain = () => {
@@ -10,22 +10,26 @@ const NavBarMain = () => {
     height="45"
     alt="User"
   />
-  
+
   return (
     <>
       <Navbar bg="transparent" expand="lg" className="colorBgNav">
         <Container className="cont-nav">
-          <Navbar.Brand className="colorText">PelisHub</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
-              <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
-              <Nav.Link as={Link} to='/Registro' className="colorText"> Registro </Nav.Link>
-              <NavDropdown className="navText navIcon" title={imageUsu} id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to='/IniciarSesion'> Iniciar Sesion</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to='/IniciarSesion'> Registrate</NavDropdown.Item>
-              </NavDropdown>
-              </Navbar.Collapse>
+            <div>
+              <Navbar.Brand className="colorText">PelisHub</Navbar.Brand>
+            </div>
+            <div className="segundaNav">
+            <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
+            <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
+            <Nav.Link as={Link} to='/Registro' className="colorText"> Registro </Nav.Link>
+            <NavDropdown className="navText navIcon" title={imageUsu} id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to='/IniciarSesion'> Iniciar Sesion</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/IniciarSesion'> Registrate</NavDropdown.Item>
+            </NavDropdown>
+            </div>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
