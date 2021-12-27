@@ -9,7 +9,7 @@ import Footer from './components/Footer/Footer'
 import Inicio from "./pages/Inicio"
 import Peliculas from './pages/Peliculas'
 import Registro from './pages/Registro'
-import IniciarSesion from './pages/IniciarSesion'
+import Loguearse from './pages/Loguearse'
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Inicio />}></Route>
         <Route path="/Peliculas" element={<Peliculas />}></Route>
         <Route path="/Registro" element={<Registro />}></Route>
-        <Route path="/IniciarSesion" element={<IniciarSesion />}></Route>
+        <Route path="/IniciarSesion" element={<Loguearse />}></Route>
       
       </Routes>
       <Footer/>

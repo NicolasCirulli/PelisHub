@@ -8,13 +8,9 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
-import Stack from '@mui/material/Stack';
 
+const Loguearse = () => {
 
-const Registro = () => {
     const [values, setValues] = React.useState({
         amount: '',
         password: '',
@@ -37,33 +33,17 @@ const Registro = () => {
       const handleMouseDownPassword = (event) => {
         event.preventDefault();
       };
-    
-      return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-          <div className="form-container">
 
-          <h1>Registrate</h1>
-
-
-            <TextField
+    return  (
+        <div className="form-container">
+        <h1>Iniciar Sesion</h1>
+        <TextField
               label="Email"
               id="filled-start-adornment"
               sx={{ m: 1, width: '25ch' }}
               variant="filled"
             />
-             <TextField
-              label="Nombre"
-              id="filled-start-adornment"
-              sx={{ m: 1, width: '25ch' }}
-              variant="filled"
-            />
-             <TextField
-              label="Apellido"
-              id="filled-start-adornment"
-              sx={{ m: 1, width: '25ch' }}
-              variant="filled"
-            />
-            <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
+             <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
               <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
               <FilledInput
                 id="filled-adornment-password"
@@ -84,19 +64,8 @@ const Registro = () => {
                 }
               />
             </FormControl>
-             <TextField
-              label="URL de pelicula"
-              id="filled-start-adornment"
-              sx={{ m: 1, width: '25ch' }}
-              variant="filled"
-            />
-
-            <Button className="button-send" variant="contained" endIcon={<SendIcon />}>
-                Send
-           </Button>
-          </div>
-        </Box>
-      )
+        </div>
+    )
 }
 
-export default Registro
+export default Loguearse
