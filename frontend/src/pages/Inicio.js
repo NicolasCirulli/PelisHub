@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import CardPeliculas from '../components/CardPeliculas'
+import CardPeliculas from '../components/CardPeliculas/CardPeliculas'
 
 const Inicio = () => {
 
@@ -20,7 +20,7 @@ const Inicio = () => {
         <div className='d-flex flex-wrap'>
 
         { 
-            peliculas.map(e=>{
+            peliculas.map((e,index)=>{
                 return <CardPeliculas datos={e}/>
             })
         }

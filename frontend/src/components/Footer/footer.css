@@ -1,0 +1,19 @@
+.footer{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    align-items: center;
+}
+
+.collapseFooter{
+    display: flex;
+    flex-direction: column;
+}
+
+.img-red{
+    margin: .5rem;
+}
+
+.textoFooter{
+    font-size: small;
+}
