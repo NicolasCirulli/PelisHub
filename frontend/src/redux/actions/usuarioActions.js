@@ -19,12 +19,17 @@ const usuarioActions = {
     },
     loguearse: (datosUsuario) => {
         return async (dispatch) => {
+            console.log(datosUsuario)
             try {
                 const respuesta = await axios.post('http://localhost:4000/api/user/ingresar', { ...datosUsuario })
+            
                 if(respuesta.data.success) {
+                    
                     dispatch({ type: 'LOGUEADO', payload: respuesta.data.response })
+                    return respuesta.data
                 } else {
                     console.log('esta mal pa');
+                    return respuesta.data
                 }
             } catch(err) {
                 console.log(err);
