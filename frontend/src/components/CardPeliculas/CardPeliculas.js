@@ -11,7 +11,7 @@ const CardPeliculas = ({ datos }) => {
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" src={imagen} />
         <Card.Body>
-          <Card.Title>{datos.original_title}</Card.Title>
+          <Card.Title>{datos.title || datos.original_name }</Card.Title>
           <Card.Text>
             {datos.overview}
           </Card.Text>

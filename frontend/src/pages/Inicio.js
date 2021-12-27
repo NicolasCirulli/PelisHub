@@ -20,7 +20,7 @@ const Inicio = () => {
         <div className='d-flex flex-wrap'>
 
         { 
-            peliculas.map(e=>{
+            peliculas.map((e,index)=>{
                 return <CardPeliculas datos={e}/>
             })
         }
