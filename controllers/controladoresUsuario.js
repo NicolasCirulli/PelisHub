@@ -24,8 +24,10 @@ const controladoresUsuario = {
     },
     ingresarUsuario : (req, res) => {
         const { mail, contrasenia, flagGoogle} = req.body
-        usuario.findOne({mail:mail})
+        console.log(mail, contrasenia, flagGoogle)
+        Usuario.findOne({mail:mail})
         .then((usuario) =>{
+            console.log(usuario)
             if(!usuario) throw new Error('correo o contraseña incorrectas')
             if(usuario.google && !flagGoogle) throw new Error ('Has creado una cuenta con Google, por favor ingrese con ella')
             let correctPass = bcryptjs.compareSync(contrasenia, usuario.contrasenia)

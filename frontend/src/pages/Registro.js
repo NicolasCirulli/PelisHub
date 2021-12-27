@@ -1,102 +1,48 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import FilledInput from '@mui/material/FilledInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
-import SendIcon from '@mui/icons-material/Send';
-import Stack from '@mui/material/Stack';
+import { Form, Button } from 'react-bootstrap'
+
 
 
 const Registro = () => {
-    const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-      });
-    
-      const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      };
-    
-      const handleClickShowPassword = () => {
-        setValues({
-          ...values,
-          showPassword: !values.showPassword,
-        });
-      };
-    
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
-    
-      return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-          <div className="form-container">
+  return (
+    <Form className="d-flex flex-column form-container" variant="light">
 
-          <h1>Registrate</h1>
+    <h1      className="text-light mb-5">Iniciar Sesion</h1>
 
+        <Form.Group className="mb-3 col-5" controlId="formBasicEmail">
+          <Form.Label     className="text-light">Nombre</Form.Label>
+          <Form.Control type="text" placeholder="Nombre" />
+        </Form.Group>
 
-            <TextField
-              label="Email"
-              id="filled-start-adornment"
-              sx={{ m: 1, width: '25ch' }}
-              variant="filled"
-            />
-             <TextField
-              label="Nombre"
-              id="filled-start-adornment"
-              sx={{ m: 1, width: '25ch' }}
-              variant="filled"
-            />
-             <TextField
-              label="Apellido"
-              id="filled-start-adornment"
-              sx={{ m: 1, width: '25ch' }}
-              variant="filled"
-            />
-            <FormControl sx={{ m: 1, width: '25ch' }} variant="filled">
-              <InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
-              <FilledInput
-                id="filled-adornment-password"
-                type={values.showPassword ? 'text' : 'password'}
-                value={values.password}
-                onChange={handleChange('password')}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-             <TextField
-              label="URL de pelicula"
-              id="filled-start-adornment"
-              sx={{ m: 1, width: '25ch' }}
-              variant="filled"
-            />
+        <Form.Group className="mb-3 col-5" controlId="formBasicEmail">
+          <Form.Label    className="text-light">Apellido</Form.Label>
+          <Form.Control type="email" placeholder="Apellido" />
+        </Form.Group>
 
-            <Button className="button-send" variant="contained" endIcon={<SendIcon />}>
-                Send
-           </Button>
-          </div>
-        </Box>
-      )
+        <Form.Group className="mb-3 col-5" controlId="formBasicEmail">
+          <Form.Label   className="text-light">Email</Form.Label>
+          <Form.Control type="email" placeholder="Email" />
+        </Form.Group>
+
+        <Form.Group className="mb-3 col-5" controlId="formBasicPassword">
+          <Form.Label  className="text-light">Contraseña</Form.Label>
+          <Form.Control type="password" placeholder="Contraseña" />
+        </Form.Group>
+        
+        <Form.Group className="mb-3 col-5" controlId="formBasicPassword">
+          <Form.Label className="text-light">URL de imagen</Form.Label>
+          <Form.Control type="password" placeholder="Imagen" />
+        </Form.Group>
+
+        <Button className="button-send"  type="submit">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Enviar
+      </Button>
+</Form>
+  )
 }
 
 export default Registro
