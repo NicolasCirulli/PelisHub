@@ -2,8 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import usuarioActions from "../redux/actions/usuarioActions";
+import Swal from 'sweetalert2';
 
 const Loguearse = () => {
+
+  
+  const Alert = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: toast => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+
   const dispatch = useDispatch();
 
   const mail = useRef()
@@ -24,14 +39,24 @@ const Loguearse = () => {
           );
           
           if(respuesta.success){
-            alert('bienvenido '+ respuesta.response.nombre)
+            Alert.fire({
+              title: `bienvenido ${respuesta.response.nombre}`,
+              icon: 'success'
+            })
             mail.current.value = ''
             contrasenia.current.value = ''
-          }else{alert(respuesta.error)}
+          }else{Alert.fire({
+            title: respuesta.error,
+            icon: 'error'
+          })}
           
         }catch(err){console.log(err)}
       }else{
-        alert('complete los campos')
+        Alert.fire({
+          icon: 'error',
+          title: 'Completa los campos',
+          background: 'white'
+        })
       }
   }
   /* 
