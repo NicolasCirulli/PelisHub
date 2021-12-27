@@ -44,19 +44,23 @@ const Loguearse = () => {
       variant="light"
       onSubmit={logearse}
     >
-      <h1>Iniciar Sesion</h1>
-      <Form.Group className="mb-3 col-6" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+      <h1 className="text-light mb-5">Iniciar Sesion</h1>
+      <Form.Group className="mb-3 col-5" controlId="formBasicEmail">
+        <Form.Label className="text-light">Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" ref={mail} />
       </Form.Group>
 
-      <Form.Group className="mb-3 col-6" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+      <Form.Group className="mb-3 col-5" controlId="formBasicPassword">
+        <Form.Label className="text-light" >Password</Form.Label>
         <Form.Control type="password" placeholder="Password" ref={contrasenia} />
       </Form.Group>
-      <Button variant="secondary" type="submit" className="col-2">
-        Submit
-      </Button>
+      <Button className="button-send"  type="submit">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Enviar
+    </Button>
     </Form>
   );
 };
