@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {Container,Pagination} from 'react-bootstrap'
-import CardPeliculas from "../components/CardPeliculas";
+import CardPeliculas from "../components/CardPeliculas/CardPeliculas";
 
 
 const Peliculas = () => {
