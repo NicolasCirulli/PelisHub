@@ -34,7 +34,7 @@ const Ficha = (props) => {
         if (id > 2) {
           try {
             const res = await axios.get(
-              `https://api.themoviedb.org/3/movie/${id}?api_key=43fd83d3a9756a2f59b0de39480b3bf7&language=es-ES`
+              `https://api.themoviedb.org/3/movie/${id}?api_key=43fd83d3a9756a2f59b0de39480b3bf7&language=es-MX`
             )
             console.log(res)
             setPelicula(res.data)
@@ -78,6 +78,8 @@ const Ficha = (props) => {
     }
     let trailers = videos.filter((e) => 
     e.type==="Trailer"&&e.site==="YouTube")
+
+    console.log('estos son los parametros:',parameters)
 
         return (
             <div className="main-ficha">
