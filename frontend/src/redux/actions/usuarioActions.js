@@ -3,14 +3,19 @@ import axios from 'axios';
 const usuarioActions = {
     nuevoUsuario: (usuario) => {
         return async (dispatch) => {
+            console.log(usuario)
             try {
-                const respuesta = await axios.post('http://localhost/4000/api/user/registrase', {...usuario})
-                console.log(respuesta);
+                const respuesta = await axios.post('http://localhost:4000/api/user/registrarse', {...usuario})
+
+                
+
                 if(respuesta.data.success) {
                     localStorage.setItem('token', respuesta.data.response.token)
                     dispatch({ type: 'LOGUEADO', payload: respuesta.data.response })
+                    return respuesta.data
                 } else {
                     console.log('no se registro pa');
+                    return respuesta.data
                 }
             } catch(err) {
                 console.log(err);
@@ -22,7 +27,7 @@ const usuarioActions = {
             console.log(datosUsuario)
             try {
                 const respuesta = await axios.post('http://localhost:4000/api/user/ingresar', { ...datosUsuario })
-            
+                
                 if(respuesta.data.success) {
                     
                     dispatch({ type: 'LOGUEADO', payload: respuesta.data.response })
