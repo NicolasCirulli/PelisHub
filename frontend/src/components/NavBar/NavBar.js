@@ -6,7 +6,7 @@ import { connect } from "react-redux"
 
 
 function NavBarMain (props) {
-  localStorage.getItem("token") && !props.usuario && props.iniciarConToken()
+  
   let imageUsu = <img
     src='../assets/user.png'
     width="50"
@@ -25,7 +25,7 @@ function NavBarMain (props) {
             </div>
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
-            {!props.token ? (
+            {!props.foto ? (
             <NavDropdown className="navText navIcon" title={imageUsu} id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to='/IniciarSesion'> Iniciar Sesion</NavDropdown.Item>
               <NavDropdown.Item as={Link} to='/Registro'> Registro</NavDropdown.Item>
@@ -37,12 +37,12 @@ function NavBarMain (props) {
                 title={
                   <img
                     src={
-                      props.usuario.foto
-                        ? props.usuario.foto
+                      props.foto
+                        ? props.foto
                         : "../assets/user.png"
                     }
                     className="foto-usu"
-                    alt="user_photo"
+                    alt="foto-usuario"
                   />
                 }
                 id="basic-nav-dropdown"
@@ -68,8 +68,7 @@ const mapDispatchToProps = {
 }
 const mapStateToProps = (state) => {
   return {
-    usuario: state.usuarioReducer.foto,
-    token: state.usuarioReducer.token,
+    foto: state.usuarioReducer.foto,
   }
 }
 
