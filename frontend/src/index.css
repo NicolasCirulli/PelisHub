@@ -170,6 +170,10 @@ body {
   justify-content: center;
 }
 
+.form-control {
+  border-radius: 0.1rem;
+}
+
 /* FIN REGISTRO */
 
 /* FIN REGISTRO */
@@ -332,20 +336,34 @@ span {
 /* ESTILOS PELICULAS */
 
 .titulo-pelis{
-  color: white;
+  color: navajowhite;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 6%;
+  letter-spacing:3px;
+  text-transform: uppercase;
 }
 
 .buscar-pelis{
   display: flex;
   justify-content: space-around;
-  margin: 1rem;
+  margin: 4rem;
 }
 
 .input-pelis{
   padding: 0 1rem;
+  background-color:black;
+  color: white;
+  border: .5px solid rgba(255, 255, 255, 0.801);
+}
+
+.input-pelis::placeholder {
+  color: rgba(245, 245, 245, 0.726);
+}
+
+div.card-pelis.card {
+  border: none !important;
 }
 
 .form-pelis{
@@ -354,6 +372,8 @@ span {
 
 .form-genero{
   padding: .5rem 1rem;
+  background-color:black;
+  color: white;
 }
 
 .pelisAll{

@@ -110,7 +110,7 @@ const Peliculas = () => {
         className="input-pelis"
           type="text"
           ref={buscadorPorNombre}
-          placeholder="pelicula"
+          placeholder="Buscar una pelicula..."
           onChange={fetchearPorNombre}
         />
         <form onChange={fetchear} >
