@@ -26,9 +26,11 @@ const usuarioActions = {
             console.log(datosUsuario)
             try {
                 const respuesta = await axios.post('http://localhost:4000/api/user/ingresar', { ...datosUsuario })
+                console.log(respuesta);
+
                 
                 if(respuesta.data.success) {
-                    
+                    localStorage.setItem('token', respuesta.data.response.token)
                     dispatch({ type: 'LOGUEADO', payload: respuesta.data.response })
                     return respuesta.data
                 } else {

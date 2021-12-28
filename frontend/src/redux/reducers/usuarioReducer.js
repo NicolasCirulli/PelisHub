@@ -10,7 +10,7 @@ const usuarioReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOGUEADO': 
             return { ...state, ...action.payload}
-        case 'DESLOGUEADO': 
+        case 'DESLOGUEARSE': 
             return { initialState }
         default :
             return state
