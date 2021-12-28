@@ -13,6 +13,7 @@ const Ficha = (props) => {
     const [productor, setProductor] = useState('');
     const [generos, setGeneros] = useState([]);
     const [videos, setVideos] = useState([]);
+    const [favorita,setFavorita] = useState(false);
  
     const videosPorId = async (id) => {
         if (id > 2) {
@@ -79,7 +80,15 @@ const Ficha = (props) => {
     let trailers = videos.filter((e) => 
     e.type==="Trailer"&&e.site==="YouTube")
 
-    console.log('estos son los parametros:',parameters)
+  console.log('estos son los parametros:',parameters)
+
+  const cambiarFavorita = async () => {
+      if (favorita===true) {
+        setFavorita(false)
+      } else {
+        setFavorita(true)
+      }
+  }
 
         return (
             <div className="main-ficha">
@@ -111,6 +120,19 @@ const Ficha = (props) => {
                     <pre>   </pre>
                     <img src="../../assets/gold-like.png" alt="star" />
                     <h6 className="negrita">{`Votos: ${pelicula.vote_count} Likes`}</h6>
+                    <pre>   </pre>
+                    {
+                        favorita ? 
+                        <>
+                            <img onClick={() => cambiarFavorita()} src="../../assets/full-heart.png" alt="star" />
+                            <h6 className="negrita">Agregada en mis favoritas</h6>
+                        </>
+                        :
+                        <>
+                            <img onClick={() => cambiarFavorita()} src="../../assets/empty-heart.png" alt="star" />
+                            <h6 className="negrita">Agregar a mis favoritas</h6>
+                        </>
+                    }
                 </div>
                 <h4 className="light-text">Trailer</h4>
                 {   
@@ -127,6 +149,7 @@ const Ficha = (props) => {
                 <Comments peliculaId={pelicula.id} peliculaDatos={pelicula}/>
 
                 <Link to={`/Peliculas`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Volver a Películas</button></Link>
+                <Link to={`/Favoritas`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Ir a Favoritas</button></Link>
             </div>
         )  
 }
