@@ -28,7 +28,7 @@ body {
 }
 
 .form-control {
-  border-radius: none;
+  border-radius: .1!important;
 }
 
 .button-send{

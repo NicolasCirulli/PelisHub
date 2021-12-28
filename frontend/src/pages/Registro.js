@@ -2,10 +2,24 @@ import React,{useRef} from 'react';
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux";
 import usuarioActions from "../redux/actions/usuarioActions";
+import Swal from 'sweetalert2';
+
 
 
 
 const Registro = () => {
+
+  const Alert = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: toast => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
 
 
   const dispatch = useDispatch()
@@ -31,10 +45,16 @@ const Registro = () => {
 
         console.log(respuesta)
         if(respuesta.success){
-          alert('Cuenta creada')
+          Alert.fire({
+            title: 'Se registro con exito!',
+            icon: 'success'
+          })
         }else{
           respuesta.error.map(e=> {
-            alert(e.message)
+            Alert.fire({
+              title: e.message,
+              icon: 'error'
+            })
           })
         }
 

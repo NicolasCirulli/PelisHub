@@ -40,7 +40,7 @@ const Loguearse = () => {
           
           if(respuesta.success){
             Alert.fire({
-              title: `bienvenido ${respuesta.response.nombre}`,
+              title: `Bienvenido ${respuesta.response.nombre}`,
               icon: 'success'
             })
             mail.current.value = ''
