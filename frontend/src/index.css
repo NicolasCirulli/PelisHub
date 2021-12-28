@@ -28,7 +28,7 @@ body {
 }
 
 .form-control {
-  border-radius: none;
+  border-radius: none!important;
 }
 
 .button-send{
@@ -138,6 +138,36 @@ body {
 .btn-primary {
   background-color: black;
   border-color:black
+}
+
+.btn-google {
+  width: 13vw;
+  height: 8vh;
+  margin: 40px;
+  background: black;
+  color: white;
+  border: solid .5px white;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.btn-google:hover {
+  background-color: #1D1F20;
+  border: solid .5px black;
+}
+
+.o-google {
+  color: white;
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-buttons {
+  height:auto;
+  display:flex;
+  justify-content: center;
 }
 
 /* FIN REGISTRO */

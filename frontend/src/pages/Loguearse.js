@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import usuarioActions from "../redux/actions/usuarioActions";
 import Swal from 'sweetalert2';
 import GoogleLogin from 'react-google-login';
+import { FcGoogle } from "react-icons/fc";
 
 
 const Loguearse = () => {
@@ -117,21 +118,39 @@ const Loguearse = () => {
         <Form.Label className="text-light" >Password</Form.Label>
         <Form.Control type="password" placeholder="Password" ref={contrasenia} />
       </Form.Group>
-      <Button className="button-send"  type="submit">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Enviar
-    </Button>
 
-    <GoogleLogin
-      clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
-      buttonText="Iniciar sesion con Google"
-      onSuccess={responseGoogle}
-      onFailure={responseGoogle}
-      cookiePolicy={'single_host_origin'}
-  />
+      <div className="d-flex justify-content-center align-center container-buttons">
+
+        <Button className="button-send"  type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Loguearse
+        </Button>
+
+<span className="o-google">o</span>
+
+<GoogleLogin
+    clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
+    render={(renderProps) => (
+      <button
+        onClick={renderProps.onClick}
+        className="btn-google"
+        disabled={renderProps.disabled}
+      >
+        Loguearse con Google
+        <FcGoogle className="mx-3" />
+      </button>
+    )}
+    buttonText="Loguearse con Google"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={"single_host_origin"}
+/>  
+
+</div>
+
 
     </Form>
   );
