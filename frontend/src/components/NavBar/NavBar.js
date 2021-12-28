@@ -23,10 +23,9 @@ const NavBarMain = () => {
             <div className="segundaNav">
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
-            <Nav.Link as={Link} to='/Registro' className="colorText"> Registro </Nav.Link>
             <NavDropdown className="navText navIcon" title={imageUsu} id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to='/IniciarSesion'> Iniciar Sesion</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to='/IniciarSesion'> Registrate</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/Registro'> Registro</NavDropdown.Item>
             </NavDropdown>
             </div>
           </Navbar.Collapse>
