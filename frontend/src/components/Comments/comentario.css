@@ -1,0 +1,77 @@
+/* Comentarios */
+
+.containerComentaryImg{
+
+    /* border: 1px solid black; */
+    width: 50%;
+    margin: 2rem auto;
+    height: 100%;
+    background-color: white;
+    padding: 1rem;
+  
+  }
+  .containerComentary{
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .comment{
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  
+  .containerComent{
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: white; 
+  }
+  
+  .iconEdit{
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+  
+  .send{
+    margin-left: 1rem;
+    cursor: pointer;
+   
+  }
+  
+  .liked{
+    cursor: pointer;
+  }
+  
+  .iconDelete{
+    margin-left: 1rem;
+    cursor: pointer;
+  }
+  
+  .containerInputSend{
+    display: flex;
+    align-items: center;
+  }
+  
+/* logo de los usuarios */
+
+  .imguser{
+
+    width: 10%;
+    border-radius: 25px;
+    margin-right: 1rem;
+  }
+
+
+/* container comentarios */
+
+.containerLikes{
+    display: flex;
+    /* border:1px solid black; */
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 1rem;
+}
