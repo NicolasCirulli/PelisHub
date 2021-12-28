@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import usuarioActions from '../../redux/actions/usuarioActions'
 import { connect } from "react-redux"
-
+import fotoDefault from '../../assets/user.png'
 
 function NavBarMain (props) {
   
   let imageUsu = <img
-    src='../assets/user.png'
+    src={fotoDefault}
     width="50"
     height="45"
     alt="User"
@@ -39,7 +39,7 @@ function NavBarMain (props) {
                     src={
                       props.foto
                         ? props.foto
-                        : "../assets/user.png"
+                        : fotoDefault
                     }
                     className="foto-usu"
                     alt="foto-usuario"
@@ -47,10 +47,8 @@ function NavBarMain (props) {
                 }
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item>
-                  <Link to="/" onClick={() => { props.desloguearse() }}>
+                <NavDropdown.Item as={Link} to='/' onClick={() => { props.desloguearse() }}>
                     <span className="texto-usu">Cerrar sesion</span>
-                  </Link>
                 </NavDropdown.Item>
               </NavDropdown>
             </>

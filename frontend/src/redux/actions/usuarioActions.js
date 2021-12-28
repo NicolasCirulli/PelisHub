@@ -56,7 +56,8 @@ const usuarioActions = {
                 Authorization: 'Bearer '+ token,
             }
         })
-            dispatch({type:"LOGUEADO", payload:{token, nombre:respuesta.data.nombre, foto: respuesta.data.foto, _id:respuesta.data._id}})
+        console.log(respuesta)
+            dispatch({type:"LOGUEADO", payload:{token, nombre:respuesta.data.response.nombre, foto: respuesta.data.response.foto, _id:respuesta.data.response._id}})
             }catch(error) {
               console.log(error);
             }

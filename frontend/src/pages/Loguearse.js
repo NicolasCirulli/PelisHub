@@ -47,8 +47,10 @@ const Loguearse = () => {
             })
             mail.current.value = ''
             contrasenia.current.value = ''
-          }else{Alert.fire({
-            title: respuesta.error,
+          }else{
+            console.log(respuesta)
+            Alert.fire({
+            title: respuesta.error[0].message,
             icon: 'error'
           })}
           
@@ -67,23 +69,25 @@ const Loguearse = () => {
 
   const responseGoogle = async (respuesta) => {
     let usuarioGoogle = {
-      nombre: respuesta.profileObj.name, 
+
       mail: respuesta.profileObj.email,
       contrasenia: respuesta.profileObj.googleId,
-      apellido: 'null',
-      foto: respuesta.profileObj.imageUrl,
+      flagGoogle: true
+
     }
     await dispatch(usuarioActions.loguearse(usuarioGoogle))
     .then(res => {
       if (res.success){
+        console.log(res)
         Alert.fire({
-            icon: 'success',
-            title: 'Tu cuenta a sido creada'
-          })
-    }
-    else{
+          icon: 'success',
+          title: 'Bienvenido/a '+res.response.nombre
+        })
+      }
+      else{
+      console.log(res)
       Alert.fire({
-        title: 'No se pudo loguear con Google',
+        title: res.error[0].message,
         icon: 'error'
       })
     }

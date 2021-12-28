@@ -66,26 +66,27 @@ const Registro = () => {
   }
 
   const responseGoogle = async (respuesta) => {
-    console.log('google', respuesta);
     let usuarioGoogle = {
-      nombre: respuesta.profileObj.name, 
+      nombre: respuesta.profileObj.givenName, 
+      apellido: respuesta.profileObj.familyName,
       mail: respuesta.profileObj.email,
       contrasenia: respuesta.profileObj.googleId,
       foto: respuesta.profileObj.imageUrl,
-      apellido: 'null',
       google: true
     }
     await dispatch (usuarioActions.nuevoUsuario(usuarioGoogle))
     .then(res => {
       if (res.success) {
+        console.log(res)
         Alert.fire({
-            icon: 'success',
-            title: 'Tu cuenta a sido creada'
-          })
-    }
-    else{
-      Alert.fire({
-        title: 'No se pudo registrar con Google',
+          icon: 'success',
+          title: 'Tu cuenta a sido creada'
+        })
+      }
+      else{
+        console.log(res)
+        Alert.fire({
+        title: res.error[0].message,
         icon: 'error'
       })
     }

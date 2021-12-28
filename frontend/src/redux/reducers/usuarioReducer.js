@@ -1,9 +1,9 @@
 const initialState =  {
     usuario: {},
-    token: {},
-    nombre: {},
-    foto: {},
-    _id: {}
+    token: false,
+    nombre: false,
+    foto: false,
+    _id: false
 }
 
 const usuarioReducer = (state = initialState, action) => {
