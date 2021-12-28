@@ -10,7 +10,7 @@ const controladoresUsuario = {
         Usuario.findOne({mail:mail})
         .then((usuario)=>{
             if(usuario){
-                throw new Error ('Este correo ya esta en uso')
+                res.json({success:false, error:[{message:'Este correo ya esta en uso'}]})
             }else{
                 nuevoUsuario.save()
                 .then((nuevoUsuario) =>{
@@ -28,10 +28,10 @@ const controladoresUsuario = {
         Usuario.findOne({mail:mail})
         .then((usuario) =>{
             console.log(usuario)
-            if(!usuario) throw new Error('correo o contraseña incorrectas')
-            if(usuario.google && !flagGoogle) throw new Error ('Has creado una cuenta con Google, por favor ingrese con ella')
+            if(!usuario) res.json({success:false, error:[{message:'Correo o contraseña incorrectas'}]})
+            if(usuario.google && !flagGoogle) res.json({success:false, error:[{message:'Haz creado una cuenta con google, por favor ingrese con ella'}]})
             let correctPass = bcryptjs.compareSync(contrasenia, usuario.contrasenia)
-            if(!correctPass) throw new Error('correo o contraseña incorrectas')
+            if(!correctPass) res.json({success:false, error:[{message:'Correo o contraseña incorrectas'}]})
             const token = jwt.sign({...usuario}, process.env.SECRETKEY)
             res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id}})
          })
