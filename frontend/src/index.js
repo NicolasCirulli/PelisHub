@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import '../src/components/NavBar/navbar.css'
 import '../src/components/Footer/footer.css'
+import '../src/components/CardPeliculas/cardpeliculas.css'
 
 
 // redux 
