@@ -10,6 +10,7 @@ import Inicio from "./pages/Inicio"
 import Peliculas from './pages/Peliculas'
 import Registro from './pages/Registro'
 import Loguearse from './pages/Loguearse'
+import Ficha from "./pages/Ficha";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Inicio />}></Route>
         <Route path="/Peliculas" element={<Peliculas />}></Route>
+        <Route path='/Peliculas/:id' element={<Ficha />}></Route>
         <Route path="/Registro" element={<Registro />}></Route>
         <Route path="/IniciarSesion" element={<Loguearse />}></Route>
       

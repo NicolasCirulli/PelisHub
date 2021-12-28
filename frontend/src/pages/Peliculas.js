@@ -3,6 +3,8 @@ import axios from "axios";
 import { Container, Pagination } from "react-bootstrap";
 import CardPeliculas from "../components/CardPeliculas/CardPeliculas";
 
+import { Link } from "react-router-dom";
+
 const Peliculas = () => {
   const [peliculasDefault, setPeliculasDefault] = useState();
   const [peliculas, setPeliculas] = useState([]);
@@ -121,7 +123,13 @@ const Peliculas = () => {
 
       <div className="d-flex flex-wrap justify-content-center">
         {peliculas.map((pelicula) => {
-          return <CardPeliculas key={pelicula.id} datos={pelicula} />;
+          return(
+            <div key={pelicula.id}>
+                <Link to={`/Peliculas/${pelicula.id}`} className="no-decoration">
+                    <CardPeliculas key={pelicula.id} datos={pelicula} />
+                </Link>
+            </div>
+        )
         })}
       </div>
         {totalPages > 1 && (
