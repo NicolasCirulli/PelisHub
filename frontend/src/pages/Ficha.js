@@ -29,7 +29,6 @@ const Ficha = (props) => {
             setPelicula({})
           }
     }
-
     const fetchearPorId = async (id) => {
         if (id > 2) {
           try {
