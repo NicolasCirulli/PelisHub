@@ -1,0 +1,15 @@
+.card-pelis{
+    width: 20rem;
+    height: 17rem;
+    margin: 1rem;
+    background-color: white;
+}
+
+.tituloPelicula{
+    display: flex;
+    justify-content: center;
+}
+
+:hover .tituloPelicula{
+    color: black;
+}

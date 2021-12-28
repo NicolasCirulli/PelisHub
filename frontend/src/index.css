@@ -298,3 +298,64 @@ span {
 }
 
 /* FIN ESTILOS COMMENTS */
+
+/* ESTILOS PELICULAS */
+
+.titulo-pelis{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buscar-pelis{
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
+.input-pelis{
+  padding: 0 1rem;
+}
+
+.form-pelis{
+  padding: 1rem;
+}
+
+.form-genero{
+  padding: .5rem 1rem;
+}
+
+.pelisAll{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subtitulo-pelis{
+  text-decoration: none;
+  color: black;
+}
+
+.pasar-pagina{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  color: black !important;
+}
+
+.page-link{
+background-color: black;
+color: white;
+border: none;
+}
+
+.page-item.active .page-link{
+  background-color: white;
+  color: black;
+  border: white;
+}
+ 
+/* FIN DE ESTILOS PELICULAS */
+
+
