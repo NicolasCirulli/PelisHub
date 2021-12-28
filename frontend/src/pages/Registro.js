@@ -3,9 +3,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux";
 import usuarioActions from "../redux/actions/usuarioActions";
 import Swal from 'sweetalert2';
-
-
-
+import GoogleLogin from 'react-google-login';
 
 const Registro = () => {
 
@@ -50,7 +48,7 @@ const Registro = () => {
             icon: 'success'
           })
         }else{
-          respuesta.error.map(e=> {
+          respuesta.errors.map(e=> {
             Alert.fire({
               title: e.message,
               icon: 'error'
@@ -59,7 +57,46 @@ const Registro = () => {
         }
 
       }catch(err){console.log(err)}
+    } else {
+      Alert.fire({
+        title: 'Complete los campos porfavor!',
+        icon: 'error'
+      })
     }
+  }
+
+  const responseGoogle = async (respuesta) => {
+    console.log('google', respuesta);
+    let usuarioGoogle = {
+      nombre: respuesta.profileObj.name, 
+      mail: respuesta.profileObj.email,
+      contrasenia: respuesta.profileObj.googleId,
+      foto: respuesta.profileObj.imageUrl,
+      apellido: 'null',
+      google: true
+    }
+    await dispatch (usuarioActions.nuevoUsuario(usuarioGoogle))
+    .then(res => {
+      if (res.success) {
+        Alert.fire({
+            icon: 'success',
+            title: 'Tu cuenta a sido creada'
+          })
+    }
+    else{
+      Alert.fire({
+        title: 'No se pudo registrar con Google',
+        icon: 'error'
+      })
+    }
+    })
+    .catch((error) => {
+      console.log(error)
+      Alert.fire({
+          icon: 'error',
+          title: 'Algo salio mal! Vuelve en un rato!'
+        })
+  })
   }
 
 
@@ -70,27 +107,27 @@ const Registro = () => {
 
         <Form.Group className="mb-3 col-5" controlId="formBasicNombre">
           <Form.Label  className="text-light">Nombre</Form.Label>
-          <Form.Control type="text" placeholder="Nombre" ref={nombre} required/>
+          <Form.Control type="text" placeholder="Nombre" ref={nombre} />
         </Form.Group>
 
         <Form.Group className="mb-3 col-5" controlId="formBasicApellido">
           <Form.Label    className="text-light">Apellido</Form.Label>
-          <Form.Control type="text" placeholder="Apellido" ref={apellido} required/>
+          <Form.Control type="text" placeholder="Apellido" ref={apellido} />
         </Form.Group>
 
         <Form.Group className="mb-3 col-5" controlId="formBasicEmail">
           <Form.Label   className="text-light">Email</Form.Label>
-          <Form.Control type="email" placeholder="Email" ref={mail} required/>
+          <Form.Control type="email" placeholder="Email" ref={mail} />
         </Form.Group>
 
         <Form.Group className="mb-3 col-5" controlId="formBasicPassword">
           <Form.Label  className="text-light">Contraseña</Form.Label>
-          <Form.Control type="password" placeholder="Contraseña" ref={contrasenia} required/>
+          <Form.Control type="password" placeholder="Contraseña" ref={contrasenia} />
         </Form.Group>
         
         <Form.Group className="mb-3 col-5" controlId="formBasicImage">
           <Form.Label className="text-light">URL de imagen</Form.Label>
-          <Form.Control type="text" placeholder="Imagen"ref={foto} required />
+          <Form.Control type="text" placeholder="Imagen"ref={foto}  />
         </Form.Group>
 
         <Button className="button-send"  type="submit">
@@ -100,6 +137,15 @@ const Registro = () => {
         <span></span>
         Enviar
       </Button>
+
+      <GoogleLogin
+    clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
+    buttonText="Registarse con Google"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={'single_host_origin'}
+  />
+
 </Form>
   )
 }

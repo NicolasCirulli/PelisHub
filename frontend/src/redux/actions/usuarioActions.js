@@ -6,7 +6,7 @@ const usuarioActions = {
             console.log(usuario)
             try {
                 const respuesta = await axios.post('http://localhost:4000/api/user/registrarse', {...usuario})
-
+                console.log('action', respuesta);
                 
 
                 if(respuesta.data.success) {
@@ -27,6 +27,8 @@ const usuarioActions = {
             console.log(datosUsuario)
             try {
                 const respuesta = await axios.post('http://localhost:4000/api/user/ingresar', { ...datosUsuario })
+
+                console.log(respuesta);
                 
                 if(respuesta.data.success) {
                     

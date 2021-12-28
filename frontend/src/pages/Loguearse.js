@@ -3,6 +3,8 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import usuarioActions from "../redux/actions/usuarioActions";
 import Swal from 'sweetalert2';
+import GoogleLogin from 'react-google-login';
+
 
 const Loguearse = () => {
 
@@ -63,6 +65,38 @@ const Loguearse = () => {
   joaco_nc@yahoo.com
   */
 
+  const responseGoogle = async (respuesta) => {
+    let usuarioGoogle = {
+      nombre: respuesta.profileObj.name, 
+      mail: respuesta.profileObj.email,
+      contrasenia: respuesta.profileObj.googleId,
+      apellido: 'null',
+      foto: respuesta.profileObj.imageUrl,
+    }
+    await dispatch(usuarioActions.loguearse(usuarioGoogle))
+    .then(res => {
+      if (res.success){
+        Alert.fire({
+            icon: 'success',
+            title: 'Tu cuenta a sido creada'
+          })
+    }
+    else{
+      Alert.fire({
+        title: 'No se pudo loguear con Google',
+        icon: 'error'
+      })
+    }
+    })
+    .catch((error) => {
+      console.log(error)
+      Alert.fire({
+          icon: 'error',
+          title: 'You have to sign up before you log in!'
+        })
+  })
+  }
+
   return (
     <Form
       className="d-flex flex-column form-container"
@@ -86,6 +120,15 @@ const Loguearse = () => {
         <span></span>
         Enviar
     </Button>
+
+    <GoogleLogin
+      clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
+      buttonText="Iniciar sesion con Google"
+      onSuccess={responseGoogle}
+      onFailure={responseGoogle}
+      cookiePolicy={'single_host_origin'}
+  />
+
     </Form>
   );
 };
