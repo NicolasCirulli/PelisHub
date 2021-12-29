@@ -61,6 +61,8 @@ const Usuario = (props) => {
                     text: 'Tu nombre ha sido cambiado.',
                     icon: 'success'
                 })
+            } else {
+                setShown(!shown)
             }
         })
     }
