@@ -43,12 +43,12 @@ const controladoresUsuario = {
         }
     },
     eliminarUsuario :(req, res) =>{
-        usuario.findOneAndDelete({_id:req.params.id})
+        Usuario.findOneAndDelete({_id:req.params.id})
         .then(() =>res.json({success:true}))
         .catch((error) => res.json({success:false, response:error.message}))
     },
     editarUsuario:(req, res) =>{
-        usuario.findOneAndUpdate({_id:req.params.id}, {...req.body})
+        Usuario.findOneAndUpdate({_id:req.params.id}, {...req.body})
         .then(() => res.json({success:true}))
         .catch((error) => res.json({success:false, response:error.message}))
     },
