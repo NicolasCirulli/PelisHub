@@ -29,7 +29,7 @@ function NavBarMain (props) {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <div>
-              <Navbar.Brand className="colorText">{imageLogo}</Navbar.Brand>
+            <Nav.Link as={Link} to='/' className="colorText">{imageLogo} </Nav.Link>
             </div>
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
