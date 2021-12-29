@@ -9,7 +9,7 @@ const controladoresUsuario = {
         try{
            const usuarios = await Usuario.find()
            usuarios.map( usuario =>{
-              return respuesta.push({nombre:usuario.nombre, apellido:usuario.apellido, mail:usuario.mail, foto:usuario.foto,  _id:usuario._id })
+              return respuesta.push({nombre:usuario.nombre, apellido:usuario.apellido, mail:usuario.mail, foto:usuario.foto, _id:usuario._id, rol:usuario.rol })
             })
             res.json({success: true, response: respuesta})
         }catch(error){
@@ -19,7 +19,7 @@ const controladoresUsuario = {
     agregarNuevoUsuario : (req, res) => {
         const {nombre, apellido, mail, contrasenia, foto, peliculasLikeadas, google} = req.body
         let cryptPass = bcryptjs.hashSync(contrasenia)
-        const nuevoUsuario = new Usuario ({nombre, apellido, mail, contrasenia:cryptPass, foto, peliculasLikeadas, google})
+        const nuevoUsuario = new Usuario ({nombre, apellido, mail, contrasenia:cryptPass, foto, peliculasLikeadas, google, rol})
         Usuario.findOne({mail:mail})
         .then((usuario)=>{
             if(usuario){
@@ -28,7 +28,7 @@ const controladoresUsuario = {
                 nuevoUsuario.save()
                 .then((nuevoUsuario) =>{
                     const token = jwt.sign({...nuevoUsuario}, process.env.SECRETKEY)
-                    res.json({success:true, response:{nombre:nuevoUsuario.nombre, foto:nuevoUsuario.foto, token, _id:nuevoUsuario._id, apellido:nuevoUsuario.apellido, contrasenia:nuevoUsuario.contrasenia}, error:null})
+                    res.json({success:true, response:{nombre:nuevoUsuario.nombre, foto:nuevoUsuario.foto, token, _id:nuevoUsuario._id, apellido:nuevoUsuario.apellido, contrasenia:nuevoUsuario.contrasenia, rol:nuevoUsuario.rol}, error:null})
                 }) 
                 .catch((error) => res.json({success:false, response:error}))
             }
@@ -48,7 +48,7 @@ const controladoresUsuario = {
                 let correctPass = bcryptjs.compareSync(contrasenia, usuario.contrasenia)
                 if(!correctPass) res.json({success:false, error:[{message:'Correo o contraseña incorrectas'}]})
                 const token = jwt.sign({...usuario}, process.env.SECRETKEY)
-                res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id, apellido:usuario.apellido, contrasenia:usuario.contrasenia}})
+                res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id, apellido:usuario.apellido, contrasenia:usuario.contrasenia,rol:usuario.rol}})
             })
             .catch ((error) => res.json({success:false, error:error.message}))
         }catch(err){
@@ -61,7 +61,6 @@ const controladoresUsuario = {
             Usuario.find()
             .then(respuesta => res.json({success:true, respuesta:respuesta}))
         })
-        
         .catch((error) => res.json({success:false, response:error.message}))
     },
     editarUsuario:(req, res) =>{
@@ -81,7 +80,7 @@ const controladoresUsuario = {
         }
     },
     verifyToken : (req, res) => {
-        res.json({succes:true, response:{nombre: req.user.nombre, foto:req.user.foto, _id:req.user._id}})
+        res.json({succes:true, response:{nombre: req.user.nombre, foto:req.user.foto, _id:req.user._id, rol:req.user.rol}})
     }
 }
 
