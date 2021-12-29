@@ -18,10 +18,6 @@ const CardPeliculas = ({ datos }) => {
         <Card.Img variant="top" src={imagen} />
         <Card.Body>
           <Card.Title className="tituloPelicula">{datos.title || datos.original_name }</Card.Title>
-          {/* <Card.Text>
-            {datos.overview}
-          </Card.Text> */}
-          {/* <Button variant="primary">Go somewhere</Button> */}
         </Card.Body>
       </Card>
     </>
