@@ -17,7 +17,7 @@ const controladoresUsuario = {
         }
     },
     agregarNuevoUsuario : (req, res) => {
-        const {nombre, apellido, mail, contrasenia, foto, peliculasLikeadas, google} = req.body
+        const {nombre, apellido, mail, contrasenia, foto, peliculasLikeadas, google,rol} = req.body
         let cryptPass = bcryptjs.hashSync(contrasenia)
         const nuevoUsuario = new Usuario ({nombre, apellido, mail, contrasenia:cryptPass, foto, peliculasLikeadas, google, rol})
         Usuario.findOne({mail:mail})
@@ -70,12 +70,12 @@ const controladoresUsuario = {
             let cryptPass = bcryptjs.hashSync(req.body.contrasenia)
             let contraseniaNueva = {'contrasenia' : cryptPass }
 
-            Usuario.findOneAndUpdate({_id:req.params.id}, {...contraseniaNueva})
-            .then(() => res.json({success:true}))
+            Usuario.findOneAndUpdate({_id:req.params.id}, {...contraseniaNueva},{new:true})
+            .then((response) => res.json({success:true, respuesta: response}))
             .catch((error) => res.json({success:false, response:error.message}))
         }else{
-            Usuario.findOneAndUpdate({_id:req.params.id}, {...req.body})
-            .then(() => res.json({success:true}))
+            Usuario.findOneAndUpdate({_id:req.params.id}, {...req.body},{new:true})
+            .then((response) => res.json({success:true, respuesta: response}))
             .catch((error) => res.json({success:false, response:error.message}))
         }
     },

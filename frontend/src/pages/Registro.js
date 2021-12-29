@@ -70,11 +70,13 @@ const Registro = () => {
     console.log(respuesta);
     let usuarioGoogle = {
       nombre: respuesta.profileObj.givenName, 
-      apellido: respuesta.profileObj.familyName ? respuesta.profileObj.familyName : 'null',
+      // apellido: respuesta.profileObj.familyName ? respuesta.profileObj.familyName : 'null',
+      apellido: respuesta.profileObj.familyName,
       mail: respuesta.profileObj.email,
       contrasenia: respuesta.profileObj.googleId,
       foto: respuesta.profileObj.imageUrl,
-      google: true
+      google: true,
+      rol: 'usuario'
     }
     await dispatch (usuarioActions.nuevoUsuario(usuarioGoogle))
     .then(res => {

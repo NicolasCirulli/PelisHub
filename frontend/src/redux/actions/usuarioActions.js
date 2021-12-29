@@ -27,6 +27,7 @@ const usuarioActions = {
                     dispatch({ type: 'LOGUEADO', payload: respuesta.data.response })
                     return respuesta.data
                 } else {
+                    console.log(respuesta)
                     console.log('error en el registro');
                     return respuesta.data
                 }

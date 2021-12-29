@@ -35,6 +35,7 @@ function NavBarMain (props) {
             </div>
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
+            <Nav.Link as={Link} to='/Admin' className="colorText"> Admin </Nav.Link>
             {!props.foto ? (
             <NavDropdown className="navText navIcon" title={imageUsu} id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to='/IniciarSesion'> Iniciar Sesion</NavDropdown.Item>

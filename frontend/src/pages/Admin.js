@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
+import { GrUserAdmin } from "react-icons/gr";
 import "./admin.css";
 
 import axios from "axios";
@@ -31,6 +32,34 @@ const Admin = () => {
         }
   }
 
+  const handleAdmin = async(id,bool)=>{
+
+    let usuario; 
+    bool ? usuario = 'admin' : usuario = 'usuario'
+
+    SetLoading(false)
+    try{
+        const respuesta = await axios.put("http://localhost:4000/api/user/"+id, {
+            rol : usuario
+        });
+        if(respuesta.data.success){
+          console.log(respuesta)
+          const filtrado = usuarios.filter( usuario => usuario._id !== id)
+          filtrado.push(respuesta.data.respuesta)
+          console.log(filtrado)
+          setUsuarios(filtrado)
+          SetLoading(true)
+        }else{
+          console.log('fallo')
+          SetLoading(true)
+        }
+        
+    }catch(err){
+        console.log(err)
+        SetLoading(true)
+      }
+  }
+
 
   const Fila = ({datos})=>{
       return (
@@ -40,6 +69,8 @@ const Admin = () => {
                 <td>{datos.nombre}</td>
                 <td>{datos.apellido}</td>
                 <td>{datos.mail}</td>
+                <td className="box-icono"> <GrUserAdmin onClick={()=> handleAdmin(datos._id,true)}  className="icono-admin" /> </td>
+                <td className="box-icono"> <GrUserAdmin onClick={()=> handleAdmin(datos._id,false)}  className="icono-admin" /> </td>
                 <td className="box-icono"> <AiFillDelete onClick={()=> borrarUsuario(datos._id)}  className="icono-admin" /> </td>
             </tr>
           
@@ -74,6 +105,8 @@ const Admin = () => {
                 <th>Nombre</th>
                 <th>apellido</th>
                 <th>mail</th>
+                <th>Hacer admin</th>
+                <th>Quitar admin</th>
                 <th>borrar</th>
               </tr>
             </thead>
