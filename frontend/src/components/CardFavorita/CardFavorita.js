@@ -10,8 +10,6 @@ const CardFavorita = ({ datos }) => {
         imagen = './assets/nodisponible.png' 
     }
 
-    /* console.log('dentro de la favorita',datos) */
-
     return (
             <div className="favorita">
                 <img src={imagen} alt="favorita-foto"/>
@@ -20,11 +18,11 @@ const CardFavorita = ({ datos }) => {
                     <div className="datos-favorita">
                         <div className="values">
                             <img src="../../assets/gold-star.png" alt="star" />
-                            <p className="negrita petit">{`Rating: ${datos.vote_average} / 10`}</p>
+                            <p className="negrita">{`Rating: ${datos.vote_average} / 10`}</p>
                         </div>
                         <div className="values">
                             <img src="../../assets/gold-like.png" alt="star" />
-                            <p className="negrita petit">{`Votos: ${datos.vote_count} Likes`}</p>
+                            <p className="negrita">{`Votos: ${datos.vote_count} Likes`}</p>
                         </div>
 
                     </div>

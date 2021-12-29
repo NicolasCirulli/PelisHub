@@ -14,10 +14,10 @@ const CardPeliculas = ({ datos }) => {
 
   return (
     <>
-      <Card style={{ width: "18rem" , margin:'5px', borderRadios:'5px'}}>
+      <Card className="card-pelis">
         <Card.Img variant="top" src={imagen} />
         <Card.Body>
-          <Card.Title>{datos.title || datos.original_name }</Card.Title>
+          <Card.Title className="tituloPelicula">{datos.title || datos.original_name }</Card.Title>
           {/* <Card.Text>
             {datos.overview}
           </Card.Text> */}

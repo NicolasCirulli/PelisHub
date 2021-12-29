@@ -103,17 +103,18 @@ const Peliculas = () => {
 
   return (
     <Container>
-      <h1 className="text-center">Peliculas</h1>
+      <h1 className="titulo-pelis">Peliculas</h1>
 
-      <div className="d-flex justify-content-around">
+      <div className="buscar-pelis">
         <input
+        className="input-pelis"
           type="text"
           ref={buscadorPorNombre}
-          placeholder="pelicula"
+          placeholder="Buscar una pelicula..."
           onChange={fetchearPorNombre}
         />
-        <form onChange={fetchear}>
-          <select name="select" onChange={HandleGenero}>
+        <form onChange={fetchear} >
+          <select name="select" onChange={HandleGenero} className="form-genero">
             {genero.map((genero) => (
               <option value={genero.id}>{genero.name}</option>
             ))}
@@ -121,11 +122,11 @@ const Peliculas = () => {
         </form>
       </div>
 
-      <div className="d-flex flex-wrap justify-content-center">
+      <div className="pelisAll">
         {peliculas.map((pelicula) => {
           return(
             <div key={pelicula.id}>
-                <Link to={`/Peliculas/${pelicula.id}`} className="no-decoration">
+                <Link to={`/Peliculas/${pelicula.id}`} className="subtitulo-pelis">
                     <CardPeliculas key={pelicula.id} datos={pelicula} />
                 </Link>
             </div>
@@ -133,7 +134,7 @@ const Peliculas = () => {
         })}
       </div>
         {totalPages > 1 && (
-          <div className="container-fluid d-flex justify-content-center">
+          <div className="pasar-pagina">
             <Pagination>
               <Pagination.First onClick={() => setPage(1)} />
               <Pagination.Prev

@@ -17,7 +17,7 @@ const Inicio = () => {
 
     return  (
         <>
-        <div className='d-flex flex-wrap'>
+        <div className='d-flex flex-wrap justify-content-center'>
 
         { 
             peliculas.map((e,index)=>{

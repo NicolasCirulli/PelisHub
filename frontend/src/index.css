@@ -28,7 +28,7 @@ body {
 }
 
 .form-control {
-  border-radius: none;
+  border-radius: none!important;
 }
 
 .button-send{
@@ -48,10 +48,10 @@ body {
 .button-send:hover{
   background: rgb(253, 192, 255);
   color: #050801;
-  box-shadow: 0 0 5px rgb(253, 192, 255),
-              0 0 25px rgb(253, 192, 255),
-              0 0 50px rgb(253, 192, 255),
-              0 0 200px rgb(253, 192, 255);
+  box-shadow: 0 0 5px rgba(253, 192, 255, 0.397),
+              0 0 25px rgba(253, 192, 255, 0.513),
+              0 0 50px rgba(253, 192, 255, 0.397),
+              0 0 200px rgba(253, 192, 255, 0.287);
    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
    border: none;
 }
@@ -139,6 +139,42 @@ body {
   background-color: black;
   border-color:black
 }
+
+.btn-google {
+  width: 13vw;
+  height: 8vh;
+  margin: 40px;
+  background: black;
+  color: white;
+  border: solid .5px white;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.btn-google:hover {
+  background-color: #1D1F20;
+  border: solid .5px black;
+}
+
+.o-google {
+  color: white;
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-buttons {
+  height:auto;
+  display:flex;
+  justify-content: center;
+}
+
+.form-control {
+  border-radius: 0.1rem;
+}
+
+/* FIN REGISTRO */
 
 /* FIN REGISTRO */
 
@@ -355,6 +391,81 @@ h6 {
   height: 4vh;
   width: auto;
 }
-/* .petit {
-  font-size: .9rem;
-} */
+/* FIN ESTILOS COMMENTS */
+
+/* ESTILOS PELICULAS */
+
+.titulo-pelis{
+  color: navajowhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6%;
+  letter-spacing:3px;
+  text-transform: uppercase;
+}
+
+.buscar-pelis{
+  display: flex;
+  justify-content: space-around;
+  margin: 4rem;
+}
+
+.input-pelis{
+  padding: 0 1rem;
+  background-color:black;
+  color: white;
+  border: .5px solid rgba(255, 255, 255, 0.801);
+}
+
+.input-pelis::placeholder {
+  color: rgba(245, 245, 245, 0.726);
+}
+
+div.card-pelis.card {
+  border: none !important;
+}
+
+.form-pelis{
+  padding: 1rem;
+}
+
+.form-genero{
+  padding: .5rem 1rem;
+  background-color:black;
+  color: white;
+}
+
+.pelisAll{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subtitulo-pelis{
+  text-decoration: none;
+  color: black;
+}
+
+.pasar-pagina{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  color: black !important;
+}
+
+.page-link{
+background-color: black;
+color: white;
+border: none;
+}
+
+.page-item.active .page-link{
+  background-color: white;
+  color: black;
+  border: white;
+}
+ 
+/* FIN DE ESTILOS PELICULAS */
+
+
