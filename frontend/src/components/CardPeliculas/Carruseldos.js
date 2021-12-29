@@ -84,16 +84,12 @@ const Carruseldos = () => {
 
   return (
     <> 
-    <div className="logo-inicio">
-
-    <img  src={logo} alt="logo"/>
-    </div>
+        <h2 className="titulo-destacadas">Mas destacadas</h2>
       <div className="contenedor-tarjeta">
-        <h2>Mas destacadas</h2>
         <Slider {...settings}>
           {peliculas.map((img, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="tarjeta-1">
                 <Card className="tarjeta">
                   <Card.Img
                     className="img-tarjeta2"
