@@ -88,7 +88,6 @@ const Ficha = (props) => {
         setFavorita(true)
       }
   }
-
         return (
             <div className="main-ficha">
                 <h1 className="light-text">{pelicula.title}</h1>

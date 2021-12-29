@@ -81,6 +81,26 @@ const usuarioActions = {
               console.log(error);
             }
         }
+    },
+    editarUsuario: (id, datosUsuario) => {
+        return async (dispatch) => {
+            try {
+                const respuesta = await axios.put('http://localhost:4000/api/user/'+id, { ...datosUsuario })
+
+                if(respuesta.data.success) {
+                    
+                    dispatch({ type: 'LOGUEADO', payload: datosUsuario })
+                    return respuesta.data
+
+                } else {
+
+                    console.log('Esto no resultó.');
+                    return respuesta.data
+                }
+            } catch(err) {
+                console.log(err);
+            }
+        }
     }
 
 }
