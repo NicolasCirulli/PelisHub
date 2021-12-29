@@ -14,6 +14,8 @@ const Usuario = (props) => {
     
     const [peliculas, setPeliculas] = useState([])
     const [shown, setShown] = useState(false)
+    const [showApellido, setShowApellido] = useState(false)
+
     const inputHandler = useRef()
 
     const fetchearPorTendencia = async () => {
@@ -21,7 +23,6 @@ const Usuario = (props) => {
             const res = await axios.get(
               `https://api.themoviedb.org/3/trending/movie/week?api_key=43fd83d3a9756a2f59b0de39480b3bf7&language=es-ES`
             )
-            console.log('el res del axios es:',res)
             setPeliculas(res.data.results)
 
           } catch (err) {
@@ -32,12 +33,12 @@ const Usuario = (props) => {
 
     useEffect(() => {
         setShown(false)
+        setShowApellido(false)
         fetchearPorTendencia()
     },[props.render])  
 
 
     const confirmChange = (data) => {
-
         Swal.fire({
             title: 'Estas seguro?',
             icon: 'warning',
@@ -67,20 +68,150 @@ const Usuario = (props) => {
         })
     }
 
-    console.log('estos son las peliculas:',peliculas)
+    const confirmFoto = () => {
+        Swal.fire({
+            title: 'Cambia Foto',
+            text: "Ingresa la ruta de tu nueva foto:",
+            input: 'text',
+            icon: 'warning',
+            background: 'black',
+            color: 'white',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Aceptar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                props.editUserData(props.usuario._id,{foto:result.value})
+                
+                setShown(false)
+                setShowApellido(false)
+                Swal.fire({
+                    background: 'black',
+                    color: 'white',
+                    title: 'Cambio Realizado!',
+                    text: 'Tu foto ha sido cambiada.',
+                    icon: 'success'
+                })
+            } else {
+                setShown(false)
+                setShowApellido(false)
+            }
+        })
+    }
+
+    const confirmChangeApellido = (data) => {
+        Swal.fire({
+            title: 'Estas seguro?',
+            icon: 'warning',
+            background: 'black',
+            color: 'white',
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, deseo cambiarlo'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                props.editUserData(props.usuario._id,{apellido:data})
+                
+                setShowApellido(!showApellido)
+                Swal.fire({
+                    background: 'black',
+                    color: 'white',
+                    title: 'Cambio Realizado!',
+                    text: 'Tu apellido ha sido cambiado.',
+                    icon: 'success'
+                })
+            } else {
+                setShowApellido(!showApellido)
+            }
+        })
+    }
+
+    const confirmPassword = () => {
+        Swal.fire({
+            title: 'Cambio de Password',
+            text: "Ingresa la nueva contraseña:",
+            input: 'text',
+            icon: 'warning',
+            background: 'black',
+            color: 'white',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Aceptar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                let newPassword = result.value
+
+                Swal.fire({
+                    title: 'Cambio de Password',
+                    text: "Confirma tu nueva contraseña:",
+                    input: 'text',
+                    icon: 'warning',
+                    background: 'black',
+                    color: 'white',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Aceptar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        if (newPassword===result.value) {
+                            props.editUserData(props.usuario._id,{contrasenia:result.value})
+                            setShown(false)
+                            setShowApellido(false)
+                            Swal.fire({
+                                background: 'black',
+                                color: 'white',
+                                title: 'Cambio Realizado!',
+                                text: 'Tu contraseña ha sido cambiada.',
+                                icon: 'success'
+                            })
+                        } else {
+                            setShown(false)
+                            setShowApellido(false)
+                            Swal.fire({
+                                background: 'black',
+                                color: 'white',
+                                title: 'Cambio Rechazado',
+                                text: 'El nuevo valor ingresado no coincide.',
+                                icon: 'error'
+                            })
+                        }
+                    }
+                    else {
+                        setShown(false)
+                        setShowApellido(false)
+                    }
+                })
+            }
+        })
+    }
 
         return (
             
             <div className="main-ficha">
                 {
-                    props.usuario && (props.usuario.google!==true)
+                    props.token /* && (props.usuario.google!==true) */
                     ?
-                        !shown ? (
+                        (!shown && !showApellido) ? (
                             <div className="cabecera-usuario">
-                                {
-                                    props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
-                                    : <img src="../../assets/user.png" alt="foto user"/>
-                                }
+                                <div className="foto-usuario">
+                                    {
+                                        props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
+                                        : <img src="../../assets/user.png" alt="foto user"/>
+                                    }
+                                    <p type="button" onClick={() => confirmFoto()} className="parrafo light-text">Editar Foto</p>
+                                </div>
                                 <div className="datos-usuario">
 
                                     <h3 className="light-text negrita">Datos Usuario</h3>
@@ -88,48 +219,68 @@ const Usuario = (props) => {
                                         <p className="parrafo light-text"><span className="negrita">Nombre:</span>{props.usuario.nombre}</p>
                                         <FaPencilAlt className="iconEdit light-text" onClick={() => setShown(!shown)} />
                                     </div>
-                                    <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
-                                    <p className="parrafo light-text"><span className="negrita">Contraseña:</span>{props.usuario.contrasenia}</p>
-                                    
+                                    <div className="fila">
+                                        <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
+                                        <FaPencilAlt className="iconEdit light-text" onClick={() => setShowApellido(!showApellido)} />
+                                    </div>
+                                    <div className="fila">
+                                        <p className="parrafo light-text"><span className="negrita">Contraseña:</span>* * * * * * * *</p>
+                                        <FaPencilAlt className="iconEdit light-text" onClick={() => confirmPassword()} />
+                                    </div>
                                 </div>
                             </div>
                         )
-                        : (
+                        : ( (shown && !showApellido) ?
                             <div className="cabecera-usuario">
-                                {
-                                    props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
-                                    : <img src="../../assets/user.png" alt="foto user"/>
-                                }
+                                <div className="foto-usuario">
+                                    {
+                                        props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
+                                        : <img src="../../assets/user.png" alt="foto user"/>
+                                    }
+                                    <p className="parrafo light-text">Editar Foto</p>
+                                </div>
                                 <div className="datos-usuario">
 
-                                    <h6 className="light-text negrita">Datos Usuario</h6>
+                                    <h3 className="light-text negrita">Datos Usuario</h3>
                                     <div className="fila">
                                         <p className="parrafo light-text"><span className="negrita">Nombre:</span></p>
                                         <input type="text" className="parrafo edit-data" defaultValue={props.usuario.nombre} ref={inputHandler} />
                                         <IoSend className="send light-text" onClick={() => confirmChange(inputHandler.current.value)} />
+                                        <FaTrashAlt className="iconDelete light-text" onClick={() => setShown(false)} />
                                     </div>
-                                    <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
-                                    <p className="parrafo light-text"><span className="negrita">Contraseña:</span>{props.usuario.contrasenia}</p>
-                                    
+                                    <div className="fila">
+                                        <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
+                                    </div>
+                                    <p className="parrafo light-text"><span className="negrita">Contraseña:</span>* * * * * * * *</p>
+                                </div>
+                            </div>
+                            :
+                            <div className="cabecera-usuario">
+                                <div className="foto-usuario">
+                                    {
+                                        props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
+                                        : <img src="../../assets/user.png" alt="foto user"/>
+                                    }
+                                    <p className="parrafo light-text">Editar Foto</p>
+                                </div>
+                                <div className="datos-usuario">
+
+                                    <h3 className="light-text negrita">Datos Usuario</h3>
+                                    <div className="fila">
+                                        <p className="parrafo light-text"><span className="negrita">Nombre:</span>{props.usuario.nombre}</p>
+                                    </div>
+                                    <div className="fila">
+                                        <p className="parrafo light-text"><span className="negrita">Apellido:</span></p>
+                                        <input type="text" className="parrafo edit-data" defaultValue={props.usuario.apellido} ref={inputHandler} />
+                                        <IoSend className="send light-text" onClick={() => confirmChangeApellido(inputHandler.current.value)} />
+                                        <FaTrashAlt className="iconDelete light-text" onClick={() => setShowApellido(false)} />
+                                    </div>
+                                    <p className="parrafo light-text"><span className="negrita">Contraseña:</span>* * * * * * * *</p>
                                 </div>
                             </div>
                         )
                     :
-                        <div className="cabecera-usuario">
-                            {
-                                props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
-                                : <img src="../../assets/user.png" alt="foto user"/>
-                            }
-                            <div className="datos-usuario">
-
-                                <h6 className="light-text negrita">Datos Usuario</h6>
-                                <p className="parrafo light-text"><span className="negrita">Nombre:</span>{props.usuario.nombre}</p>
-                                <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
-                                <p className="parrafo light-text"><span className="negrita">Contraseña:</span>{props.usuario.contrasenia}</p>
-                                
-                            </div>
-                        </div>
-
+                    <p></p>
                 }
 
                 <h4 className="negrita light-text">Mi Lista de Favoritas</h4>
@@ -160,6 +311,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => {
     return {
         usuario: state.usuarioReducer,
+        token: state.usuarioReducer.token
     }
 }
 

@@ -41,6 +41,8 @@ const Loguearse = () => {
           })
           );
           
+          console.log('esta es la respuesta despues de loggearse:',respuesta.response)
+
           if(respuesta.success){
             Alert.fire({
               title: `Bienvenido ${respuesta.response.nombre}`,
