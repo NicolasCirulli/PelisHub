@@ -124,13 +124,13 @@ const Ficha = (props) => {
                     {
                         favorita ? 
                         <>
-                            <img onClick={() => cambiarFavorita()} src="../../assets/full-heart.png" alt="star" />
-                            <h6 className="negrita">Agregada en mis favoritas</h6>
+                            <img type="button" onClick={() => cambiarFavorita()} src="../../assets/full-heart.png" alt="star" />
+                            <h6 type="button" onClick={() => cambiarFavorita()} className="negrita">Agregada en mis favoritas</h6>
                         </>
                         :
                         <>
-                            <img onClick={() => cambiarFavorita()} src="../../assets/empty-heart.png" alt="star" />
-                            <h6 className="negrita">Agregar a mis favoritas</h6>
+                            <img type="button" onClick={() => cambiarFavorita()} src="../../assets/empty-heart.png" alt="star" />
+                            <h6 type="button" onClick={() => cambiarFavorita()} className="negrita">Agregar a mis favoritas</h6>
                         </>
                     }
                 </div>
@@ -149,7 +149,7 @@ const Ficha = (props) => {
                 <Comments peliculaId={pelicula.id} peliculaDatos={pelicula}/>
 
                 <Link to={`/Peliculas`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Volver a Películas</button></Link>
-                <Link to={`/Favoritas`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Ir a Favoritas</button></Link>
+                <Link to={`/Usuario`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Ir a Favoritas</button></Link>
             </div>
         )  
 }

@@ -16,7 +16,7 @@ const CardFavorita = ({ datos }) => {
             <div className="favorita">
                 <img src={imagen} alt="favorita-foto"/>
                 <div className="favorita-body">
-                    <h6 className="negrita light-text favorita-titulo">{datos.title}</h6>
+                    <p className="negrita light-text favorita-titulo">{datos.title}</p>
                     <div className="datos-favorita">
                         <div className="values">
                             <img src="../../assets/gold-star.png" alt="star" />

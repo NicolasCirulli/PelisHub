@@ -10,7 +10,7 @@ import Peliculas from './pages/Peliculas'
 import Registro from './pages/Registro'
 import Loguearse from './pages/Loguearse'
 import Ficha from './pages/Ficha'
-import Favoritas from './pages/Favoritas'
+import Usuario from './pages/Usuario'
 
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Route path='/Peliculas/:id' element={<Ficha />}></Route>
         <Route path="/Registro" element={<Registro />}></Route>
         <Route path="/IniciarSesion" element={<Loguearse />}></Route>
-        <Route path="/Favoritas" element={<Favoritas />}></Route>
+        <Route path="/Usuario" element={<Usuario />}></Route>
       
       </Routes>
       <Footer/>

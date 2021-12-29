@@ -295,8 +295,28 @@ span {
   border-radius: 5px;
 }
 /*-----------------------*/
-/*   ESTILOS FAVORITAS   */
+/* ESTILOS VISTA USUARIO */
 /*-----------------------*/
+.cabecera-usuario {
+  width: 80vw;
+  height: 20vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.cabecera-usuario img {
+  width: 11vw;
+  height: auto;
+  border-radius: 50%;
+}
+.datos-usuario {
+  padding-left: 30px;
+  font-size: small;
+}
+h6 {
+  margin-bottom: 10px;
+}
 .listado-favoritas {
   display: flex;
   flex-direction: row;
@@ -306,20 +326,21 @@ span {
   margin-top: 20px;
 }
 .favorita {
-  width: 18vw;
-  height: 68vh;
+  width: 15vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   border:rgb(160, 159, 159) solid 1px;
   margin: 5px;
+  font-size: small;
 }
 .favorita img {
-  width: 17.8vw;
+  width: 14.8vw;
   height: auto;
 }
 .datos-favorita {
-  width: 17.8vw;
+  width: 14.8vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -328,11 +349,12 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  font-size: small;
 }
 .values img {
   height: 4vh;
   width: auto;
 }
-.petit {
+/* .petit {
   font-size: .9rem;
-}
+} */

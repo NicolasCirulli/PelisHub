@@ -7,7 +7,7 @@ import CardFavorita from "../components/CardFavorita/CardFavorita"
 
 
 
-const Favoritas = () => {
+const Usuario = () => {
     
     const [peliculas, setPeliculas] = useState([])
 
@@ -32,8 +32,23 @@ const Favoritas = () => {
     console.log('estos son las peliculas:',peliculas)
 
         return (
+            
             <div className="main-ficha">
-                <h1 className="light-text">Mi Lista de Favoritas</h1>
+            
+                <h1 className="light-text">Vista Usuario</h1>
+                <div className="cabecera-usuario">
+                    <img src="../../assets/user.png" alt="foto user"/>
+                    <div className="datos-usuario">
+
+                        <h6 className="light-text negrita">Datos Usuario</h6>
+                        <p className="parrafo light-text"><span className="negrita">Nombre:</span>User 1</p>
+                        <p className="parrafo light-text"><span className="negrita">Apellido:</span>User 2</p>
+                        <p className="parrafo light-text"><span className="negrita">Password:</span>XXXXX</p>
+                        
+                    </div>
+                </div>
+
+                <h3 className="negrita light-text">Mi Lista de Favoritas</h3>
 
                 <div className="listado-favoritas">
                 {
@@ -55,4 +70,4 @@ const Favoritas = () => {
             </div>
         )  
 }
-export default Favoritas
+export default Usuario
