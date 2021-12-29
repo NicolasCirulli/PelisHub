@@ -48,9 +48,20 @@ const controladoresUsuario = {
         .catch((error) => res.json({success:false, response:error.message}))
     },
     editarUsuario:(req, res) =>{
-        Usuario.findOneAndUpdate({_id:req.params.id}, {...req.body})
-        .then(() => res.json({success:true}))
-        .catch((error) => res.json({success:false, response:error.message}))
+
+        if(req.body.contrasenia){
+
+            let cryptPass = bcryptjs.hashSync(req.body.contrasenia)
+            let contraseniaNueva = {'contrasenia' : cryptPass }
+
+            Usuario.findOneAndUpdate({_id:req.params.id}, {...contraseniaNueva})
+            .then(() => res.json({success:true}))
+            .catch((error) => res.json({success:false, response:error.message}))
+        }else{
+            Usuario.findOneAndUpdate({_id:req.params.id}, {...req.body})
+            .then(() => res.json({success:true}))
+            .catch((error) => res.json({success:false, response:error.message}))
+        }
     },
     verifyToken : (req, res) => {
         res.json({succes:true, response:{nombre: req.user.nombre, foto:req.user.foto, _id:req.user._id}})
