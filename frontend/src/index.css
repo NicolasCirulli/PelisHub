@@ -16,8 +16,14 @@ code {
 
 body {
   background-color: black;
+  margin-top: 8vh;
 }
 
+@media (max-width: 819px){
+  body {
+    margin-top: 15vh;
+  }
+}
 
 /* CSS REGISTRO */
 
@@ -43,7 +49,7 @@ body {
   letter-spacing: 4px;
   overflow: hidden;
   margin-right: 50px;
- 
+  border: none !important;
 }
 .button-send:hover{
   background: rgb(253, 192, 255);
@@ -146,15 +152,103 @@ body {
   margin: 40px;
   background: black;
   color: white;
-  border: solid .5px white;
+  transition: 0.5s;
   letter-spacing: 3px;
+  overflow: hidden;
   text-transform: uppercase;
 }
 
 .btn-google:hover {
-  background-color: #1D1F20;
-  border: solid .5px black;
+  background: rgb(253, 192, 255);
+  color: #050801;
+  box-shadow: 0 0 5px rgba(253, 192, 255, 0.397),
+              0 0 25px rgba(253, 192, 255, 0.513),
+              0 0 50px rgba(253, 192, 255, 0.397),
+              0 0 200px rgba(253, 192, 255, 0.287);
+   -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+   border: none;
 }
+
+.btn-google:nth-child(1){
+  filter: hue-rotate(270deg);
+}
+.btn-google:nth-child(2){
+  filter: hue-rotate(110deg);
+}
+.btn-google span{
+  position: absolute;
+  display: block;
+}
+.btn-google span:nth-child(1){
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,rgb(253, 192, 255));
+  animation: animate1 1s linear infinite;
+}
+@keyframes animate1{
+  0%{
+      left: -100%;
+  }
+  50%,100%{
+      left: 100%;
+  }
+}
+.btn-google span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,rgb(253, 192, 255));
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2{
+  0%{
+      top: -100%;
+  }
+  50%,100%{
+      top: 100%;
+  }
+}
+.btn-google span:nth-child(3){
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,rgb(253, 192, 255));
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.50s;
+}
+@keyframes animate3{
+  0%{
+      right: -100%;
+  }
+  50%,100%{
+      right: 100%;
+  }
+}
+
+
+.btn-google span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,rgb(253, 192, 255));
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4{
+  0%{
+      bottom: -100%;
+  }
+  50%,100%{
+      bottom: 100%;
+  }
+}
+
 
 .o-google {
   color: white;
@@ -237,6 +331,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 }
 .light-text {
   color: #fff;
@@ -254,12 +350,13 @@ body {
 .cabecera img {
   width: 25vw;
   height: auto;
+  object-fit: cover;
 }
 .datos-ficha {
   padding-left: 5%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:flex-start;
 }
 
 .h1-pelicula {
@@ -310,6 +407,18 @@ iframe {
 span {
   margin-right: 5px;
 }
+
+@media (max-width: 700px){
+  .cabecera img{
+    width: 60%;
+  }
+  .cabecera{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 /*-----------------------*/
 /*   ESTILOS  COMMENTS   */
 /*-----------------------*/
@@ -418,12 +527,20 @@ span {
   display: flex;
   flex-direction: row;
 }
-.cabecera-usuario img {
+.foto-usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: x-small;
+}
+.foto-usuario img{
   width: 11vw;
   height: 11vw;
   border-radius: 50%;
   margin-top: 10px;
   margin-left: 20px;
+  object-fit: cover;
+  object-position: center;
 }
 .datos-usuario {
   padding-left: 30px;
@@ -433,6 +550,10 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
+}
+.fila input {
+  height: 18px;
 }
 .edit-data {
   background-color: rgb(129, 231, 223);
@@ -554,6 +675,22 @@ border: none;
   background-color: white;
   color: black;
   border: white;
+}
+
+.boton-fav {
+  text-decoration: none;
+  display: flex;
+  justify-content:center;
+  color: orange;
+  align-items: center;
+}
+
+.boton-fav:hover {
+  color: rgba(255, 166, 0, 0.664);
+}
+
+.text-usu {
+  color: orange;
 }
  
 /* FIN DE ESTILOS PELICULAS */

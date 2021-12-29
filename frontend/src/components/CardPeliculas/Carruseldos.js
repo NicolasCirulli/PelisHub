@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Card } from "react-bootstrap";
+import logo from "../CardPeliculas/logo.png"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -79,25 +80,29 @@ const Carruseldos = () => {
       },
     ],
   };
+  
 
   return (
-    <>
+    <> 
+        <h2 className="titulo-destacadas">Mas destacadas</h2>
       <div className="contenedor-tarjeta">
-        <h2>Mas destacadas</h2>
         <Slider {...settings}>
           {peliculas.map((img, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="tarjeta-1">
                 <Card className="tarjeta">
                   <Card.Img
-                    className="img-tarjeta"
+                    className="img-tarjeta2"
                     variant="top"
                     src={`https://image.tmdb.org/t/p/w1280/${img.backdrop_path}`}
                   />
                   <Card.Body className="cards-bodys"></Card.Body>
                 </Card>
+                <div className="descripcion-peli">
                 <h2 className="h2">{img.title}</h2>
                 <h3 className="h3">{img.overview}</h3>
+
+                </div>
               </div>
             );
         })}

@@ -90,10 +90,10 @@ const Ficha = (props) => {
   }
         return (
             <div className="main-ficha">
-                <h1 className="light-text h1-pelicula">{pelicula.title}</h1>
                 <div className="cabecera">
                     <img src={imagen} alt="poster pelicula"/>
                     <div className="datos-ficha">
+                <h1 className="light-text h1-pelicula">{pelicula.title}</h1>
                         <h4 className="light-text negrita">Sinopsis</h4>
                         <p className="parrafo light-text">{pelicula.overview}</p>
                         <p className="parrafo light-text"><span className="negrita">Fecha de Estreno:</span>{pelicula.release_date}</p>
@@ -150,7 +150,7 @@ const Ficha = (props) => {
                 <span className="volverPelicula"><a></a></span>
                 </Link>
 
-                <Link to={`/Usuario`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Ir a Favoritas</button></Link>
+               
                 
             </div>
         )  

@@ -41,6 +41,8 @@ const Loguearse = () => {
           })
           );
           
+          console.log('esta es la respuesta despues de loggearse:',respuesta.response)
+
           if(respuesta.success){
             Alert.fire({
               title: `Bienvenido ${respuesta.response.nombre}`,
@@ -132,22 +134,21 @@ const Loguearse = () => {
 <span className="o-google">o</span>
 
 <GoogleLogin
-    clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
-    render={(renderProps) => (
-      <button
-        onClick={renderProps.onClick}
-        className="btn-google"
-        disabled={renderProps.disabled}
-      >
-        Loguearse con Google
-        <FcGoogle className="mx-3" />
-      </button>
-    )}
-    buttonText="Loguearse con Google"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={"single_host_origin"}
-/>  
+            clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <button onClick={renderProps.onClick} className="btn-google button-send" disabled={renderProps.disabled}>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <FcGoogle className="mx-3" style={{fontSize: "2rem"}} />
+              </button>
+            )}
+            buttonText="Registarse con Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+      /> 
 
 </div>
 

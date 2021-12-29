@@ -70,11 +70,13 @@ const Registro = () => {
     console.log(respuesta);
     let usuarioGoogle = {
       nombre: respuesta.profileObj.givenName, 
-      apellido: respuesta.profileObj.familyName ? respuesta.profileObj.familyName : 'null',
+      // apellido: respuesta.profileObj.familyName ? respuesta.profileObj.familyName : 'null',
+      apellido: respuesta.profileObj.familyName,
       mail: respuesta.profileObj.email,
       contrasenia: respuesta.profileObj.googleId,
       foto: respuesta.profileObj.imageUrl,
-      google: true
+      google: true,
+      rol: 'usuario'
     }
     await dispatch (usuarioActions.nuevoUsuario(usuarioGoogle))
     .then(res => {
@@ -148,13 +150,12 @@ const Registro = () => {
       <GoogleLogin
             clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
             render={(renderProps) => (
-              <button
-                onClick={renderProps.onClick}
-                className="btn-google"
-                disabled={renderProps.disabled}
-              >
-                Registrarse con Google
-                <FcGoogle className="mx-3" />
+              <button onClick={renderProps.onClick} className="btn-google button-send" disabled={renderProps.disabled}>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <FcGoogle className="mx-3" style={{fontSize: "2rem"}} />
               </button>
             )}
             buttonText="Registarse con Google"
