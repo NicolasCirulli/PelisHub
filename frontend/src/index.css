@@ -644,5 +644,21 @@ border: none;
   color: black;
   border: white;
 }
+
+.boton-fav {
+  text-decoration: none;
+  display: flex;
+  justify-content:center;
+  color: orange;
+  align-items: center;
+}
+
+.boton-fav:hover {
+  color: rgba(255, 166, 0, 0.664);
+}
+
+.text-usu {
+  color: orange;
+}
  
 /* FIN DE ESTILOS PELICULAS */

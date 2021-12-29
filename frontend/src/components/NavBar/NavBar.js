@@ -5,7 +5,7 @@ import usuarioActions from '../../redux/actions/usuarioActions'
 import { connect } from "react-redux"
 import fotoDefault from '../../assets/user.png'
 import { BiLogOut } from 'react-icons/bi';
-
+import { AiOutlineUser } from 'react-icons/ai';
 
 function NavBarMain (props) {
   
@@ -57,8 +57,9 @@ function NavBarMain (props) {
                 }
                 id="basic-nav-dropdown"
               >
+               <Link to={`/Usuario`} className="no-decoration boton-fav d-flex justify-content-center align-intems-center"><p className="no-decoration boton-fav d-flex justify-content-center align-intems-center">Pefil <AiOutlineUser></AiOutlineUser></p></Link>
                 <NavDropdown.Item as={Link} to='/' onClick={() => { props.desloguearse() }}>
-                    <span className="texto-usu">Cerrar sesion <BiLogOut></BiLogOut></span>
+                    <p className="texto-usu d-flex justify-content-center align-items-center text-info">Cerrar sesion <BiLogOut></BiLogOut></p>
                 </NavDropdown.Item>
               </NavDropdown>
             </>
