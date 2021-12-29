@@ -244,6 +244,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
 }
 .light-text {
   color: #fff;
@@ -267,7 +268,7 @@ body {
   padding-left: 5%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:flex-start;
 }
 
 .h1-pelicula {
@@ -318,6 +319,18 @@ iframe {
 span {
   margin-right: 5px;
 }
+
+@media (max-width: 700px){
+  .cabecera img{
+    width: 60%;
+  }
+  .cabecera{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 /*-----------------------*/
 /*   ESTILOS  COMMENTS   */
 /*-----------------------*/
