@@ -3,6 +3,19 @@ const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const controladoresUsuario = {
+    obtenerTodosLosUsuarios:async (req, res) => {
+        let error = null
+        let respuesta = []
+        try{
+           const usuarios = await Usuario.find()
+           usuarios.map( usuario =>{
+              return respuesta.push({nombre:usuario.nombre, apellido:usuario.apellido, mail:usuario.mail, foto:usuario.foto,  _id:usuario._id })
+            })
+            res.json({success: true, response: respuesta})
+        }catch(error){
+            res.json({success: false, response: null})
+        }
+    },
     agregarNuevoUsuario : (req, res) => {
         const {nombre, apellido, mail, contrasenia, foto, peliculasLikeadas, google} = req.body
         let cryptPass = bcryptjs.hashSync(contrasenia)
@@ -15,7 +28,7 @@ const controladoresUsuario = {
                 nuevoUsuario.save()
                 .then((nuevoUsuario) =>{
                     const token = jwt.sign({...nuevoUsuario}, process.env.SECRETKEY)
-                    res.json({success:true, response:{nombre:nuevoUsuario.nombre, foto:nuevoUsuario.foto, token, _id:nuevoUsuario._id}, error:null})
+                    res.json({success:true, response:{nombre:nuevoUsuario.nombre, foto:nuevoUsuario.foto, token, _id:nuevoUsuario._id, apellido:nuevoUsuario.apellido, contrasenia:nuevoUsuario.contrasenia}, error:null})
                 }) 
                 .catch((error) => res.json({success:false, response:error}))
             }
@@ -35,7 +48,7 @@ const controladoresUsuario = {
                 let correctPass = bcryptjs.compareSync(contrasenia, usuario.contrasenia)
                 if(!correctPass) res.json({success:false, error:[{message:'Correo o contraseña incorrectas'}]})
                 const token = jwt.sign({...usuario}, process.env.SECRETKEY)
-                res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id}})
+                res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id, apellido:usuario.apellido, contrasenia:usuario.contrasenia}})
             })
             .catch ((error) => res.json({success:false, error:error.message}))
         }catch(err){
