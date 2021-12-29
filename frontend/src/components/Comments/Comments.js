@@ -1,59 +1,104 @@
 import React, { useState, useRef, useEffect } from "react"
-import { connect } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import swal from 'sweetalert2'
+import comentaryAction from "../../redux/actions/comentarioActions"
+import Comment from "./Comment"
+import { IoSend } from 'react-icons/io5'
+import toasty from "./Toast"
+const Comments = (props) => {
 
-const Comment = (props) => {
+    const [renderComments, setRenderComments] = useState(true)
+    const inputHandler = useRef()
+    const { peliculaId } = props
+    const dispatch = useDispatch()
+
+    const usuario = useSelector(state => state.usuarioReducer._id)
+    const usuarioFoto = useSelector(state => state.usuarioReducer.foto)
+
+    useEffect(() => {
+
+        dispatch(comentaryAction.obtenerComentarios(peliculaId))
+
+       
+
+    }, [peliculaId])
+
+    
+    const comentarios = useSelector(state => state.comentarioReducer.comentarios)
+
+    const sendComment = () => {
+
+        let commentValue = inputHandler.current.value;
+        if (usuario) {
+            if (commentValue !== '') {
+                
+                dispatch(comentaryAction.agregarComentarios(commentValue,peliculaId, usuarioFoto , usuario ))
+                .then((res) => {
+                    dispatch(comentaryAction.obtenerComentarios(peliculaId))
+                    setRenderComments(!renderComments)
+                })
+                .catch((error) => console.log(error))
+                inputHandler.current.value = '';
+
+            } else {
+                toasty('error', 'You cannot send empty comments')
+            }
+        } else {
+            toasty('error', 'You must be logged in')
+        }
+
+    }
+
+    const handlerEnter = (e) => {
+        if (e.key === 'Enter') {
+            sendComment()
+        }
+    }
+
+
+    const editComment = (id, comentario) => {
+        dispatch(comentaryAction.editarComentario(id, comentario))
+            .then((res) => {
+
+                dispatch(comentaryAction.obtenerComentarios(peliculaId))
+                setRenderComments(!renderComments)
+
+            })
+            .catch((error) => console.log(error))
+    }
+    
+
+    const deleteComment = (comentarioId) => {
+        dispatch(comentaryAction.eliminarComentario(comentarioId))
+            .then((res) => {
+                dispatch(comentaryAction.obtenerComentarios(peliculaId))
+                // setRenderComments(!renderComments)
+            })
+            .catch((error) => console.log(error))
+    }
 
     return (
-        <div>
-            <div className="comments">
-                <div className="onecomment">
-                    <div className="commentpic" key="0001">
-                        <img src="../../assets/user.png" alt="user" />
-                    </div>
-                    <div className="nombreycomment">
-                        <p className="negrita">Username</p><p>:</p><p className="comentario">Esta peli es muy buena</p>
-                    </div>
-                </div>
-                    <div className="onecomment">
-                        <div className="commentpic" key="0002">
-                            <img src="../../assets/user.png" alt="user" />
-                        </div>
-                        <div className="nombreycomment">
-                        <p className="negrita">Username</p><p>:</p><p className="comentario">Esta peli es muy buena</p>
-                    </div>
-                    </div>
-                    <div className="onecomment">
-                        <div className="commentpic" key="0003">
-                            <img src="../../assets/user.png" alt="user" />
-                        </div>
-                        <div className="nombreycomment">
-                        <p className="negrita">Username</p><p>:</p><p className="comentario">Esta peli es muy buena</p>
-                    </div>
-                    </div>
-                    <div className="onecomment">
-                        <div className="commentpic" key="0004">
-                            <img src="../../assets/user.png" alt="user" />
-                        </div>
-                        <div className="nombreycomment">
-                        <p className="negrita">Username</p><p>:</p><p className="comentario">Esta peli es muy buena</p>
-                    </div>
-                    </div>
-                    <div className="onecomment">
-                        <div className="commentpic" key="0005">
-                            <img src="../../assets/user.png" alt="user" />
-                        </div>
-                        <div className="nombreycomment">
-                        <p className="negrita">Username</p><p>:</p><p className="comentario">Esta peli es muy buena</p>
-                    </div>
-                    </div>
+
+        <>  
+            <div className="containerComentaryImg">
+
+            {comentarios && comentarios.map((comentario) => {
+                return (
+                    <Comment render={renderComments} comentarios={comentario} deleteComment={deleteComment} editComment={editComment} />
+                )
+
+            })}
+
+            <div className='containerInputSend'>
+                <input type="text" ref={inputHandler} placeholder='Write a comment' onKeyPress={handlerEnter} className='comment' />
+                <IoSend className="send" onClick={() => sendComment()} />
             </div>
-            <div className="makecomment">
-                <input className="writecomment" type="text" placeholder="Your comment..." />
-                <button className="btn btn-primary mb-3 btn-makecomment bblue">Comment!</button>
+
             </div>
-        </div>
+
+        </>
+
     )
 }
 
-export default Comment
+export default Comments
