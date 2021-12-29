@@ -1,0 +1,18 @@
+.card-pelis{
+    width: 20rem;
+    height: 17rem;
+    margin: 1rem;
+    background-color: white;
+    border-radius: none;
+}
+
+.tituloPelicula{
+    display: flex;
+    justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: bold;
+}
+
+:hover .tituloPelicula{
+    color: black;
+}

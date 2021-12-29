@@ -28,7 +28,7 @@ body {
 }
 
 .form-control {
-  border-radius: none;
+  border-radius: none!important;
 }
 
 .button-send{
@@ -48,10 +48,10 @@ body {
 .button-send:hover{
   background: rgb(253, 192, 255);
   color: #050801;
-  box-shadow: 0 0 5px rgb(253, 192, 255),
-              0 0 25px rgb(253, 192, 255),
-              0 0 50px rgb(253, 192, 255),
-              0 0 200px rgb(253, 192, 255);
+  box-shadow: 0 0 5px rgba(253, 192, 255, 0.397),
+              0 0 25px rgba(253, 192, 255, 0.513),
+              0 0 50px rgba(253, 192, 255, 0.397),
+              0 0 200px rgba(253, 192, 255, 0.287);
    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
    border: none;
 }
@@ -140,6 +140,272 @@ body {
   border-color:black
 }
 
+.btn-google {
+  width: 13vw;
+  height: 8vh;
+  margin: 40px;
+  background: black;
+  color: white;
+  border: solid .5px white;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.btn-google:hover {
+  background-color: #1D1F20;
+  border: solid .5px black;
+}
+
+.o-google {
+  color: white;
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-buttons {
+  height:auto;
+  display:flex;
+  justify-content: center;
+}
+
+.form-control {
+  border-radius: 0.1rem;
+}
 
 /* FIN REGISTRO */
+
+/* FIN REGISTRO */
+
+/* -------------- */
+/* FICHA PELICULA */
+/* -------------- */
+.main-ficha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.light-text {
+  color: #fff;
+}
+.warning-text {
+  color: #ffc400;
+}
+.cabecera {
+  width: 80vw;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.cabecera img {
+  width: 25vw;
+  height: auto;
+}
+.datos-ficha {
+  padding-left: 20px;
+  font-size: small;
+}
+.parrafo {
+  margin-bottom: 10px;
+}
+.negrita {
+  font-weight: bold;
+}
+iframe {
+  width: 50vw;
+  height: 50vh;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.rating {
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.rating img {
+  width: 4vw;
+  height: auto;
+}
+span {
+  margin-right: 5px;
+}
+/*-----------------------*/
+/*   ESTILOS  COMMENTS   */
+/*-----------------------*/
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 80vw;
+  height: 29vh;
+  background-color: black; 
+  color: #fff;
+  border-radius: 8px;
+  overflow-y: scroll;
+  margin-top: 20px;
+}
+.onecomment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 3px;
+  margin-bottom: 1px;
+  width: 99%;
+  background-color: rgb(68, 68, 68);
+  height: 10vh;
+  border-radius: 5px;
+}
+.commentpic {
+  background-color: rgb(68, 68, 68);
+}
+.commentpic img {
+  height: 7vh;
+  width: 7vh;
+  background-color: rgb(68, 68, 68);
+  margin: 5px;
+  border-radius: 50%;
+}
+.nombreycomment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  
+  height: 8vh;
+  width: 85%;
+  background-color: rgb(160, 159, 159);
+  
+  margin: 3px;
+  border-radius: 5px;
+}
+.nombreycomment p {
+  background-color: rgb(160, 159, 159);
+  color: black;
+}
+.botones {
+  display: flex;
+  flex-direction: row;
+  
+  margin: 3px;
+  height: 5vh;
+}
+.button-comment {
+  height: 5vh;
+  width: 5vh;
+  margin-right: 2px;
+}
+.makecomment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  width: 80vw;
+  height: 10vh;
+  background-color: rgb(68, 68, 68);
+  color: #fff;
+
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.btn-makecomment {
+  height: 8.5vh;
+  font-size: 0.8rem;
+  margin: 4px;
+  border-radius: 5px;
+}
+.writecomment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 9vh;
+  width: 86%;
+  background-color: rgb(179, 178, 178);
+  color: black;
+  margin: 3px;
+  border-radius: 5px;
+}
+
+/* FIN ESTILOS COMMENTS */
+
+/* ESTILOS PELICULAS */
+
+.titulo-pelis{
+  color: navajowhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6%;
+  letter-spacing:3px;
+  text-transform: uppercase;
+}
+
+.buscar-pelis{
+  display: flex;
+  justify-content: space-around;
+  margin: 4rem;
+}
+
+.input-pelis{
+  padding: 0 1rem;
+  background-color:black;
+  color: white;
+  border: .5px solid rgba(255, 255, 255, 0.801);
+}
+
+.input-pelis::placeholder {
+  color: rgba(245, 245, 245, 0.726);
+}
+
+div.card-pelis.card {
+  border: none !important;
+}
+
+.form-pelis{
+  padding: 1rem;
+}
+
+.form-genero{
+  padding: .5rem 1rem;
+  background-color:black;
+  color: white;
+}
+
+.pelisAll{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subtitulo-pelis{
+  text-decoration: none;
+  color: black;
+}
+
+.pasar-pagina{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  color: black !important;
+}
+
+.page-link{
+background-color: black;
+color: white;
+border: none;
+}
+
+.page-item.active .page-link{
+  background-color: white;
+  color: black;
+  border: white;
+}
+ 
+/* FIN DE ESTILOS PELICULAS */
+
 

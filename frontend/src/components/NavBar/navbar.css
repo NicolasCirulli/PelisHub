@@ -25,3 +25,11 @@
     align-items: center;
 }
 
+.foto-usu{
+    width: 3rem;
+  height: 3rem;
+  border-radius: 50%; 
+  object-fit: cover;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}

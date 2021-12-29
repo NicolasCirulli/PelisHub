@@ -3,6 +3,9 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import usuarioActions from "../redux/actions/usuarioActions";
 import Swal from 'sweetalert2';
+import GoogleLogin from 'react-google-login';
+import { FcGoogle } from "react-icons/fc";
+
 
 const Loguearse = () => {
 
@@ -40,13 +43,15 @@ const Loguearse = () => {
           
           if(respuesta.success){
             Alert.fire({
-              title: `bienvenido ${respuesta.response.nombre}`,
+              title: `Bienvenido ${respuesta.response.nombre}`,
               icon: 'success'
             })
             mail.current.value = ''
             contrasenia.current.value = ''
-          }else{Alert.fire({
-            title: respuesta.error,
+          }else{
+            console.log(respuesta)
+            Alert.fire({
+            title: respuesta.error[0].message,
             icon: 'error'
           })}
           
@@ -62,6 +67,40 @@ const Loguearse = () => {
   /* 
   joaco_nc@yahoo.com
   */
+
+  const responseGoogle = async (respuesta) => {
+    let usuarioGoogle = {
+
+      mail: respuesta.profileObj.email,
+      contrasenia: respuesta.profileObj.googleId,
+      flagGoogle: true
+
+    }
+    await dispatch(usuarioActions.loguearse(usuarioGoogle))
+    .then(res => {
+      if (res.success){
+        console.log(res)
+        Alert.fire({
+          icon: 'success',
+          title: 'Bienvenido/a '+res.response.nombre
+        })
+      }
+      else{
+      console.log(res)
+      Alert.fire({
+        title: res.error[0].message,
+        icon: 'error'
+      })
+    }
+    })
+    .catch((error) => {
+      console.log(error)
+      Alert.fire({
+          icon: 'error',
+          title: 'You have to sign up before you log in!'
+        })
+  })
+  }
 
   return (
     <Form
@@ -79,13 +118,40 @@ const Loguearse = () => {
         <Form.Label className="text-light" >Password</Form.Label>
         <Form.Control type="password" placeholder="Password" ref={contrasenia} />
       </Form.Group>
-      <Button className="button-send"  type="submit">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        Enviar
-    </Button>
+
+      <div className="d-flex justify-content-center align-center container-buttons">
+
+        <Button className="button-send"  type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Loguearse
+        </Button>
+
+<span className="o-google">o</span>
+
+<GoogleLogin
+    clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
+    render={(renderProps) => (
+      <button
+        onClick={renderProps.onClick}
+        className="btn-google"
+        disabled={renderProps.disabled}
+      >
+        Loguearse con Google
+        <FcGoogle className="mx-3" />
+      </button>
+    )}
+    buttonText="Loguearse con Google"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={"single_host_origin"}
+/>  
+
+</div>
+
+
     </Form>
   );
 };

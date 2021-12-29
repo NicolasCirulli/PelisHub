@@ -10,7 +10,7 @@ const controladoresUsuario = {
         Usuario.findOne({mail:mail})
         .then((usuario)=>{
             if(usuario){
-                throw new Error ('Este correo ya esta en uso')
+                res.json({success:false, error:[{message:'Este correo ya esta en uso'}]})
             }else{
                 nuevoUsuario.save()
                 .then((nuevoUsuario) =>{
@@ -22,20 +22,25 @@ const controladoresUsuario = {
         })
         .catch((error) => res.json({success:false, response:null, error: error.message}))
     },
-    ingresarUsuario : (req, res) => {
+    ingresarUsuario : async(req, res) => {
         const { mail, contrasenia, flagGoogle} = req.body
         console.log(mail, contrasenia, flagGoogle)
-        Usuario.findOne({mail:mail})
-        .then((usuario) =>{
-            console.log(usuario)
-            if(!usuario) throw new Error('correo o contraseña incorrectas')
-            if(usuario.google && !flagGoogle) throw new Error ('Has creado una cuenta con Google, por favor ingrese con ella')
-            let correctPass = bcryptjs.compareSync(contrasenia, usuario.contrasenia)
-            if(!correctPass) throw new Error('correo o contraseña incorrectas')
-            const token = jwt.sign({...usuario}, process.env.SECRETKEY)
-            res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id}})
-         })
-        .catch ((error) => res.json({success:false, error:error.message}))
+
+        try{
+            await Usuario.findOne({mail:mail})
+            .then((usuario) =>{
+                console.log(usuario)
+                if(!usuario) res.json({success:false, error:[{message:'El mail no esta registrado'}]})
+                if(usuario.google && !flagGoogle) res.json({success:false, error:[{message:'Haz creado una cuenta con google, por favor ingrese con ella'}]})
+                let correctPass = bcryptjs.compareSync(contrasenia, usuario.contrasenia)
+                if(!correctPass) res.json({success:false, error:[{message:'Correo o contraseña incorrectas'}]})
+                const token = jwt.sign({...usuario}, process.env.SECRETKEY)
+                res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id}})
+            })
+            .catch ((error) => res.json({success:false, error:error.message}))
+        }catch(err){
+            console.log(err)
+        }
     },
     eliminarUsuario :(req, res) =>{
         usuario.findOneAndDelete({_id:req.params.id})
@@ -48,7 +53,7 @@ const controladoresUsuario = {
         .catch((error) => res.json({success:false, response:error.message}))
     },
     verifyToken : (req, res) => {
-        res.json({nombre: req.usuario.nombre, foto:req.usuario.foto, _id:req.usuario._id})
+        res.json({succes:true, response:{nombre: req.user.nombre, foto:req.user.foto, _id:req.user._id}})
     }
 }
 

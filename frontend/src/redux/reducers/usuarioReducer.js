@@ -1,16 +1,16 @@
 const initialState =  {
     usuario: {},
-    token: {},
-    nombre: {},
-    foto: {},
-    _id: {}
+    token: false,
+    nombre: false,
+    foto: false,
+    _id: false
 }
 
 const usuarioReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOGUEADO': 
             return { ...state, ...action.payload}
-        case 'DESLOGUEADO': 
+        case 'DESLOGUEARSE': 
             return { initialState }
         default :
             return state
