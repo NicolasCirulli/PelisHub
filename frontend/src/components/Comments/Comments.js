@@ -41,10 +41,10 @@ const Comments = (props) => {
                 inputHandler.current.value = '';
 
             } else {
-                toasty('error', 'You cannot send empty comments')
+                toasty('error', 'No podes enviar comentarios vacios!')
             }
         } else {
-            toasty('error', 'You must be logged in')
+            toasty('error', 'Debes estar logueado para dejar una reseña!')
         }
 
     }

@@ -82,11 +82,11 @@ const Ficha = (props) => {
 
         return (
             <div className="main-ficha">
-                <h1 className="light-text">{pelicula.title}</h1>
+                <h1 className="light-text h1-pelicula">{pelicula.title}</h1>
                 <div className="cabecera">
                     <img src={imagen} alt="poster pelicula"/>
                     <div className="datos-ficha">
-                        <h6 className="light-text negrita">Sinopsis</h6>
+                        <h4 className="light-text negrita">Sinopsis</h4>
                         <p className="parrafo light-text">{pelicula.overview}</p>
                         <p className="parrafo light-text"><span className="negrita">Fecha de Estreno:</span>{pelicula.release_date}</p>
                         <p className="parrafo light-text"><span className="negrita">Título Original:</span>{pelicula.original_title}</p>
@@ -111,7 +111,7 @@ const Ficha = (props) => {
                     <img src="../../assets/gold-like.png" alt="star" />
                     <h6 className="negrita">{`Votos: ${pelicula.vote_count} Likes`}</h6>
                 </div>
-                <h4 className="light-text">Trailer</h4>
+                <h3 className="light-text trailer-title">Trailer</h3>
                 {   
                     trailers.length>0 ?
                         <iframe src={`https://www.youtube.com/embed/${trailers[0].key}`}

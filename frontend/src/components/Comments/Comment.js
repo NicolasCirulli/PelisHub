@@ -48,7 +48,7 @@ const Comment = (props) => {
     const likeItinerary = async () => {
         setLikeIcon(false)
         if (!usuario) {
-            toasty('error', 'You must be logged in to like this post')
+            toasty('error', 'Debes estar logueado para darle me gusta al comentario!')
         } else {
             let response = await dispatch(comentaryAction.likeItinerary(comentarios._id, usuario))
 

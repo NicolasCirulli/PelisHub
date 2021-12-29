@@ -256,14 +256,35 @@ body {
   height: auto;
 }
 .datos-ficha {
-  padding-left: 20px;
-  font-size: small;
+  padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.h1-pelicula {
+  color: papayawhip;
+  margin: 5%;
+  letter-spacing: 1.5px;
+}
+
+.trailer-title {
+  color: papayawhip;
+  letter-spacing: 1px;
+  margin: 4%;
+}
+
 .parrafo {
   margin-bottom: 10px;
 }
-.negrita {
+
+h4.light-text.negrita {
+  color: #ffc400;
+}
+
+span.negrita {
   font-weight: bold;
+  color: orange;
 }
 iframe {
   width: 50vw;
