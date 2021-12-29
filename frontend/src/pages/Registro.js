@@ -148,13 +148,12 @@ const Registro = () => {
       <GoogleLogin
             clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
             render={(renderProps) => (
-              <button
-                onClick={renderProps.onClick}
-                className="btn-google"
-                disabled={renderProps.disabled}
-              >
-                Registrarse con Google
-                <FcGoogle className="mx-3" />
+              <button onClick={renderProps.onClick} className="btn-google button-send" disabled={renderProps.disabled}>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <FcGoogle className="mx-3" style={{fontSize: "2rem"}} />
               </button>
             )}
             buttonText="Registarse con Google"
