@@ -90,9 +90,9 @@ const Ficha = (props) => {
   }
         return (
             <div className="main-ficha">
+                <h1 className="light-text h1-pelicula">{pelicula.title}</h1>
                 <div className="cabecera">
                     <img src={imagen} alt="poster pelicula"/>
-                <h1 className="light-text h1-pelicula">{pelicula.title}</h1>
                     <div className="datos-ficha">
                         <h4 className="light-text negrita">Sinopsis</h4>
                         <p className="parrafo light-text">{pelicula.overview}</p>
