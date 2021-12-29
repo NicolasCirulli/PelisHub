@@ -3,6 +3,19 @@ const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 const controladoresUsuario = {
+    obtenerTodosLosUsuarios:async (req, res) => {
+        let error = null
+        let respuesta = []
+        try{
+           const usuarios = await Usuario.find()
+           usuarios.map( usuario =>{
+              return respuesta.push({nombre:usuario.nombre, apellido:usuario.apellido, mail:usuario.mail, foto:usuario.foto,  _id:usuario._id })
+            })
+            res.json({success: true, response: respuesta})
+        }catch(error){
+            res.json({success: false, response: null})
+        }
+    },
     agregarNuevoUsuario : (req, res) => {
         const {nombre, apellido, mail, contrasenia, foto, peliculasLikeadas, google} = req.body
         let cryptPass = bcryptjs.hashSync(contrasenia)

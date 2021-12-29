@@ -6,13 +6,16 @@ const Router = require('express').Router();
 const validador = require("../controllers/validador");
 const { get } = require('mongoose');
 
-const {agregarNuevoUsuario, ingresarUsuario, eliminarUsuario, editarUsuario, verifyToken} = controladoresUsuario
+const {obtenerTodosLosUsuarios,agregarNuevoUsuario, ingresarUsuario, eliminarUsuario, editarUsuario, verifyToken} = controladoresUsuario
 const {agregarNuevoComentario,getCommentForMovies,updateComment,deleteComment,likeComment} = controladoresComentario
 
 
 Router.route("/user/registrarse")
- .post(validador,agregarNuevoUsuario)
- 
+.post(validador,agregarNuevoUsuario)
+
+Router.route("/usuarios")
+ .get(obtenerTodosLosUsuarios)
+
 Router.route("/user/ingresar")
  .post(ingresarUsuario)
  
