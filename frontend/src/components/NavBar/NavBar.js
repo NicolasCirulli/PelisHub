@@ -26,7 +26,7 @@ function NavBarMain (props) {
 
   return (
     <>
-      <Navbar bg="transparent" expand="lg" className="colorBgNav">
+      <Navbar expand="lg" className="colorBgNav" fixed='top'>
         <Container className="cont-nav">
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
