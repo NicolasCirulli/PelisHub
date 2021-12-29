@@ -1,4 +1,5 @@
 const Usuario = require ('../models/Usuario')
+const Comentario = require('../models/Comentario')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -58,8 +59,11 @@ const controladoresUsuario = {
     eliminarUsuario :(req, res) =>{
         Usuario.findOneAndDelete({_id:req.params.id})
         .then(() =>{
-            Usuario.find()
-            .then(respuesta => res.json({success:true, respuesta:respuesta}))
+            Comentario.deleteMany({ idUsuario: { $gte: req.params.id } })
+            .then(()=>{
+                Usuario.find()
+                .then(respuesta => res.json({success:true, respuesta:respuesta}))
+            })
         })
         .catch((error) => res.json({success:false, response:error.message}))
     },
