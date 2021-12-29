@@ -25,14 +25,16 @@ function NavBarMain (props) {
 
 
   return (
-    <>
-      <Navbar expand="lg" className="colorBgNav" fixed='top'>
-        <Container className="cont-nav">
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <div>
-            <Nav.Link as={Link} to='/' className="colorText">{imageLogo} </Nav.Link>
-            </div>
+    <div className="nav-container">
+      <Navbar  expand="lg" className="colorBgNav" fixed='top'>
+  <Container className="d-flex justify-content-center">
+    <Navbar.Brand href="#home">
+        <div>
+           <Nav.Link as={Link} to='/' className="colorText">{imageLogo} </Nav.Link>
+        </div>
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
             {!props.foto ? (
@@ -64,12 +66,17 @@ function NavBarMain (props) {
               </NavDropdown>
             </>
           )}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
+
+
+
+    </div>
   );
 };
+
+
 
 const mapDispatchToProps = {
   loguearse: usuarioActions.loguearse,
