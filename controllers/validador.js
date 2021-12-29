@@ -6,7 +6,7 @@ const validador = (req, res, next) => {
             'string.empty' : 'Debes completar este campo',
             'string.min' : 'nombre no permitido',
         }),
-        apellido:joi.string().trim().min(2).required().messages({
+        apellido:joi.string().trim().min(2).messages({
             'string.empty' : 'Debes completar este campo',
             'string.min' : 'apellido no permitido',
         }),
