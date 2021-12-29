@@ -18,7 +18,7 @@ const Card = () => {
       <img src={imagen} alt="" />
       <div>
         <h2>{datos.title || datos.original_name}</h2>
-        <p>kjandwknbakwbndb</p>
+       
       </div>
     </div>
   </div>
