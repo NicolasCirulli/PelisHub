@@ -14,6 +14,14 @@ function NavBarMain (props) {
     alt="User"
   />
 
+  let imageLogo = <img
+    src= '../../assets/logopelishub.png'
+    width="150"
+    height="50"
+    alt="logo"
+  />
+
+
   return (
     <>
       <Navbar bg="transparent" expand="lg" className="colorBgNav">
@@ -21,7 +29,7 @@ function NavBarMain (props) {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <div>
-              <Navbar.Brand className="colorText">PelisHub</Navbar.Brand>
+              <Navbar.Brand className="colorText">{imageLogo}</Navbar.Brand>
             </div>
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
