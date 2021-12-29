@@ -5,6 +5,8 @@ import {useSelector, useDispatch} from 'react-redux'
 
 import usuarioActions from "./redux/actions/usuarioActions";
 
+import ScrollToTop from '../src/components/ScrollToTop';
+
 import NavBarMain from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
 
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <ScrollToTop/>
     <div className="container-fluid">
       <NavBarMain/>
       <Routes>

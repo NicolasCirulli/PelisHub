@@ -67,9 +67,10 @@ const Registro = () => {
   }
 
   const responseGoogle = async (respuesta) => {
+    console.log(respuesta);
     let usuarioGoogle = {
       nombre: respuesta.profileObj.givenName, 
-      apellido: respuesta.profileObj.familyName,
+      apellido: respuesta.profileObj.familyName ? respuesta.profileObj.familyName : 'null',
       mail: respuesta.profileObj.email,
       contrasenia: respuesta.profileObj.googleId,
       foto: respuesta.profileObj.imageUrl,
