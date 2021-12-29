@@ -150,7 +150,7 @@ const Ficha = (props) => {
                 <span className="volverPelicula"><a></a></span>
                 </Link>
 
-                <Link to={`/Usuario`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Ir a Favoritas</button></Link>
+               
                 
             </div>
         )  

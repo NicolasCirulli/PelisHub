@@ -5,7 +5,7 @@ import usuarioActions from '../../redux/actions/usuarioActions'
 import { connect } from "react-redux"
 import fotoDefault from '../../assets/user.png'
 import { BiLogOut } from 'react-icons/bi';
-
+import { AiOutlineUser } from 'react-icons/ai';
 
 function NavBarMain (props) {
   
@@ -25,14 +25,16 @@ function NavBarMain (props) {
 
 
   return (
-    <>
-      <Navbar expand="lg" className="colorBgNav" fixed='top'>
-        <Container className="cont-nav">
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <div>
-            <Nav.Link as={Link} to='/' className="colorText">{imageLogo} </Nav.Link>
-            </div>
+    <div className="nav-container">
+      <Navbar  expand="lg" className="colorBgNav" fixed='top'>
+  <Container className="d-flex justify-content-center">
+    <Navbar.Brand href="#home">
+        <div>
+           <Nav.Link as={Link} to='/' className="colorText">{imageLogo} </Nav.Link>
+        </div>
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
             <Nav.Link as={Link} to='/Admin' className="colorText"> Admin </Nav.Link>
@@ -58,18 +60,24 @@ function NavBarMain (props) {
                 }
                 id="basic-nav-dropdown"
               >
+               <Link to={`/Usuario`} className="no-decoration boton-fav d-flex justify-content-center align-intems-center"><p className="no-decoration boton-fav d-flex justify-content-center align-intems-center">Pefil <AiOutlineUser></AiOutlineUser></p></Link>
                 <NavDropdown.Item as={Link} to='/' onClick={() => { props.desloguearse() }}>
-                    <span className="texto-usu">Cerrar sesion <BiLogOut></BiLogOut></span>
+                    <p className="texto-usu d-flex justify-content-center align-items-center text-info">Cerrar sesion <BiLogOut></BiLogOut></p>
                 </NavDropdown.Item>
               </NavDropdown>
             </>
           )}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
+
+
+
+    </div>
   );
 };
+
+
 
 const mapDispatchToProps = {
   loguearse: usuarioActions.loguearse,
