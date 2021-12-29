@@ -75,6 +75,11 @@ const Comment = (props) => {
                                 <img className="imguser " src={comentarios.comentaryPhoto} alt="usericon"></img>
                                 <p className='comment'>{comentarios.comentario} </p>
                                 <FaPencilAlt className="iconEdit" onClick={() => setShown(!shown)} />
+                                <div  className="containerLik">
+                                <p className='me-3'>{itinerariesLikes.length}</p>
+                                {liked}
+
+                            </div>
 
                             </div>
                         )

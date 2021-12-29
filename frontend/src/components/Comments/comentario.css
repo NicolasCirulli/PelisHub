@@ -68,10 +68,19 @@
 
 /* container comentarios */
 
+.containerLik{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 1rem;
+    
+}
+
 .containerLikes{
     display: flex;
     /* border:1px solid black; */
     align-items: center;
     justify-content: flex-end;
     margin-left: 1rem;
+    cursor: pointer;
 }
