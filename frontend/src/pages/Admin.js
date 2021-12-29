@@ -43,7 +43,6 @@ const Admin = () => {
             rol : usuario
         });
         if(respuesta.data.success){
-          console.log(respuesta)
           const filtrado = usuarios.filter( usuario => usuario._id !== id)
           filtrado.push(respuesta.data.respuesta)
           console.log(filtrado)
