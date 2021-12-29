@@ -27,7 +27,7 @@ const usuarioActions = {
                     dispatch({ type: 'LOGUEADO', payload: respuesta.data.response })
                     return respuesta.data
                 } else {
-                    console.log('no se registro pa');
+                    console.log('error en el registro');
                     return respuesta.data
                 }
             } catch(err) {
@@ -76,7 +76,7 @@ const usuarioActions = {
             }
         })
         console.log(respuesta)
-            dispatch({type:"LOGUEADO", payload:{token, nombre:respuesta.data.response.nombre, foto: respuesta.data.response.foto, _id:respuesta.data.response._id}})
+            dispatch({type:"LOGUEADO", payload:{token, nombre:respuesta.data.response.nombre, foto: respuesta.data.response.foto, _id:respuesta.data.response._id, rol:respuesta.data.response.rol}})
             }catch(error) {
               console.log(error);
             }

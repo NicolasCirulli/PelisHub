@@ -5,7 +5,8 @@ const initialState =  {
     foto: false,
     _id: false,
     apellido: false,
-    google: false
+    google: false,
+    rol: false
 }
 
 const usuarioReducer = (state = initialState, action) => {

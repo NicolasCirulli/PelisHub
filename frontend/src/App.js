@@ -23,8 +23,10 @@ function App() {
 
   const dispatch = useDispatch()
   const usuario = useSelector(state => state.usuarioReducer._id)
+  const rol = useSelector(state => state.usuarioReducer.rol)
   const token = localStorage.getItem('token')
   useEffect(() => {
+
    (token && !usuario) && dispatch(usuarioActions.iniciarConToken(token))
 
   }, [])
@@ -42,10 +44,9 @@ function App() {
         <Route path='/Peliculas/:id' element={<Ficha />}></Route>
         {!usuario && <Route path="/Registro" element={<Registro />}></Route>}
         {!usuario && <Route path="/IniciarSesion" element={<Loguearse />}></Route>}
+        {!rol && (rol === 'admin') && <Route path='/Admin' element={<Admin />}></Route>}
+        {!rol && (rol === 'usuario') &&<Route path='/Usuario' element={<Usuario />}></Route>}
         <Route path='*' element={<Inicio />}></Route>
-        <Route path='/Usuario' element={<Usuario />}></Route>
-        <Route path='/Admin' element={<Admin />}></Route>
-      
       </Routes>
       <Footer/>
     </div>

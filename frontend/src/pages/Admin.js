@@ -9,12 +9,10 @@ const Admin = () => {
 
     const preFetch = [
         {
-
         'nombre' : 'asd',
         'apellido' : 'asd',
         'mail' : 'asd',
         'foto' : 'asd',
-
         }
     ]
 
