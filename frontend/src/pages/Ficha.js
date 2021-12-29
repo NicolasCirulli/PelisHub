@@ -125,7 +125,9 @@ const Ficha = (props) => {
                 <h4 className="negrita light-text mt-4">Comentarios</h4>
                 <Comments peliculaId={pelicula.id} peliculaDatos={pelicula}/>
 
-                <Link to={`/Peliculas`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Volver a Películas</button></Link>
+                <Link style={{margin: '5%'}} to={'/Peliculas'}>
+                <span className="volverPelicula"><a></a></span>
+                </Link>
             </div>
         )  
 }

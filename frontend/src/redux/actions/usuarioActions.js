@@ -1,4 +1,18 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
+
+const Alert = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: toast => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+
 
 const usuarioActions = {
     nuevoUsuario: (usuario) => {
@@ -45,6 +59,10 @@ const usuarioActions = {
     desloguearse:() => {
         return (dispatch) => {
             localStorage.clear()
+            Alert.fire({
+                title: 'Saliste de sesion',
+                icon: 'success'
+            })
             dispatch({ type: 'DESLOGUEARSE', payload: {}})
         }
     },

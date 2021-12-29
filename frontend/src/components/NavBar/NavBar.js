@@ -4,6 +4,8 @@ import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import usuarioActions from '../../redux/actions/usuarioActions'
 import { connect } from "react-redux"
 import fotoDefault from '../../assets/user.png'
+import { BiLogOut } from 'react-icons/bi';
+
 
 function NavBarMain (props) {
   
@@ -56,7 +58,7 @@ function NavBarMain (props) {
                 id="basic-nav-dropdown"
               >
                 <NavDropdown.Item as={Link} to='/' onClick={() => { props.desloguearse() }}>
-                    <span className="texto-usu">Cerrar sesion</span>
+                    <span className="texto-usu">Cerrar sesion <BiLogOut></BiLogOut></span>
                 </NavDropdown.Item>
               </NavDropdown>
             </>
