@@ -46,6 +46,7 @@ const usuarioActions = {
                 if(respuesta.data.success) {
                     localStorage.setItem('token', respuesta.data.response.token)
                     dispatch({ type: 'LOGUEADO', payload: respuesta.data.response })
+                    console.log(respuesta.data)
                     return respuesta.data
                 } else {
                     console.log('esta mal pa');
@@ -78,6 +79,26 @@ const usuarioActions = {
             dispatch({type:"LOGUEADO", payload:{token, nombre:respuesta.data.response.nombre, foto: respuesta.data.response.foto, _id:respuesta.data.response._id}})
             }catch(error) {
               console.log(error);
+            }
+        }
+    },
+    editarUsuario: (id, datosUsuario) => {
+        return async (dispatch) => {
+            try {
+                const respuesta = await axios.put('http://localhost:4000/api/user/'+id, { ...datosUsuario })
+
+                if(respuesta.data.success) {
+                    
+                    dispatch({ type: 'LOGUEADO', payload: datosUsuario })
+                    return respuesta.data
+
+                } else {
+
+                    console.log('Esto no resultó.');
+                    return respuesta.data
+                }
+            } catch(err) {
+                console.log(err);
             }
         }
     }

@@ -3,7 +3,9 @@ const initialState =  {
     token: false,
     nombre: false,
     foto: false,
-    _id: false
+    _id: false,
+    apellido: false,
+    google: false
 }
 
 const usuarioReducer = (state = initialState, action) => {

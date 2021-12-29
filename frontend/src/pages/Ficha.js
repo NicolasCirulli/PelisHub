@@ -13,6 +13,7 @@ const Ficha = (props) => {
     const [productor, setProductor] = useState('');
     const [generos, setGeneros] = useState([]);
     const [videos, setVideos] = useState([]);
+    const [favorita,setFavorita] = useState(false);
  
     const videosPorId = async (id) => {
         if (id > 2) {
@@ -78,8 +79,15 @@ const Ficha = (props) => {
     let trailers = videos.filter((e) => 
     e.type==="Trailer"&&e.site==="YouTube")
 
-    console.log('estos son los parametros:',parameters)
+  console.log('estos son los parametros:',parameters)
 
+  const cambiarFavorita = async () => {
+      if (favorita===true) {
+        setFavorita(false)
+      } else {
+        setFavorita(true)
+      }
+  }
         return (
             <div className="main-ficha">
                 <h1 className="light-text h1-pelicula">{pelicula.title}</h1>
@@ -110,6 +118,19 @@ const Ficha = (props) => {
                     <pre>   </pre>
                     <img src="../../assets/gold-like.png" alt="star" />
                     <h6 className="negrita">{`Votos: ${pelicula.vote_count} Likes`}</h6>
+                    <pre>   </pre>
+                    {
+                        favorita ? 
+                        <>
+                            <img type="button" onClick={() => cambiarFavorita()} src="../../assets/full-heart.png" alt="star" />
+                            <h6 type="button" onClick={() => cambiarFavorita()} className="negrita">Agregada en mis favoritas</h6>
+                        </>
+                        :
+                        <>
+                            <img type="button" onClick={() => cambiarFavorita()} src="../../assets/empty-heart.png" alt="star" />
+                            <h6 type="button" onClick={() => cambiarFavorita()} className="negrita">Agregar a mis favoritas</h6>
+                        </>
+                    }
                 </div>
                 <h3 className="light-text trailer-title">Trailer</h3>
                 {   
@@ -128,6 +149,9 @@ const Ficha = (props) => {
                 <Link style={{margin: '5%'}} to={'/Peliculas'}>
                 <span className="volverPelicula"><a></a></span>
                 </Link>
+
+                <Link to={`/Usuario`} className="no-decoration"><button className="btn btn-primary mb-3 bblue">Ir a Favoritas</button></Link>
+                
             </div>
         )  
 }

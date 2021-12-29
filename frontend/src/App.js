@@ -14,7 +14,8 @@ import Inicio from "./pages/Inicio"
 import Peliculas from './pages/Peliculas'
 import Registro from './pages/Registro'
 import Loguearse from './pages/Loguearse'
-import Ficha from "./pages/Ficha";
+import Ficha from './pages/Ficha'
+import Usuario from './pages/Usuario'
 
 
 function App() {
@@ -36,11 +37,12 @@ function App() {
       <NavBarMain/>
       <Routes>
         <Route path="/" element={<Inicio />}></Route>
-        <Route path="/Peliculas" element={<Peliculas />}></Route>
+        <Route path='/Peliculas' element={<Peliculas />}></Route>
         <Route path='/Peliculas/:id' element={<Ficha />}></Route>
         {!usuario && <Route path="/Registro" element={<Registro />}></Route>}
         {!usuario && <Route path="/IniciarSesion" element={<Loguearse />}></Route>}
         <Route path='*' element={<Inicio />}></Route>
+        <Route path='/Usuario' element={<Usuario />}></Route>
       
       </Routes>
       <Footer/>
