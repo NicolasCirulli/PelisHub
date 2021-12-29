@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import usuarioActions from "../redux/actions/usuarioActions";
 import Swal from 'sweetalert2';
 import GoogleLogin from 'react-google-login';
+import { FcGoogle } from "react-icons/fc";
 
 const Registro = () => {
 
@@ -131,21 +132,37 @@ const Registro = () => {
           <Form.Control type="text" placeholder="Imagen"ref={foto}  />
         </Form.Group>
 
+        <div className="d-flex justify-content-center align-center container-buttons">
+
         <Button className="button-send"  type="submit">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-        Enviar
+        Registrarse
       </Button>
+      
+    <span className="o-google">o</span>
 
       <GoogleLogin
-    clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
-    buttonText="Registarse con Google"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  />
+            clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <button
+                onClick={renderProps.onClick}
+                className="btn-google"
+                disabled={renderProps.disabled}
+              >
+                Registrarse con Google
+                <FcGoogle className="mx-3" />
+              </button>
+            )}
+            buttonText="Registarse con Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+      />  
+
+    </div>
 
 </Form>
   )
