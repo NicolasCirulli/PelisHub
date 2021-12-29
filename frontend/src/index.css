@@ -418,12 +418,20 @@ span {
   display: flex;
   flex-direction: row;
 }
-.cabecera-usuario img {
+.foto-usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: x-small;
+}
+.foto-usuario img{
   width: 11vw;
   height: 11vw;
   border-radius: 50%;
   margin-top: 10px;
   margin-left: 20px;
+  object-fit: cover;
+  object-position: center;
 }
 .datos-usuario {
   padding-left: 30px;
@@ -433,6 +441,10 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
+}
+.fila input {
+  height: 18px;
 }
 .edit-data {
   background-color: rgb(129, 231, 223);
