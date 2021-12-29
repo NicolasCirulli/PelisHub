@@ -9,7 +9,6 @@ import '../src/components/NavBar/navbar.css'
 import '../src/components/Footer/footer.css'
 import '../src/components/CardPeliculas/cardpeliculas.css'
 
-
 // redux 
 
 import { createStore, applyMiddleware,compose } from "redux";

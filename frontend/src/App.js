@@ -16,6 +16,7 @@ import Registro from './pages/Registro'
 import Loguearse from './pages/Loguearse'
 import Ficha from './pages/Ficha'
 import Usuario from './pages/Usuario'
+import Admin from './pages/Admin'
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         {!usuario && <Route path="/IniciarSesion" element={<Loguearse />}></Route>}
         <Route path='*' element={<Inicio />}></Route>
         <Route path='/Usuario' element={<Usuario />}></Route>
+        <Route path='/Admin' element={<Admin />}></Route>
       
       </Routes>
       <Footer/>
