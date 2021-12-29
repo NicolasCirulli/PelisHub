@@ -57,7 +57,11 @@ const controladoresUsuario = {
     },
     eliminarUsuario :(req, res) =>{
         Usuario.findOneAndDelete({_id:req.params.id})
-        .then(() =>res.json({success:true}))
+        .then(() =>{
+            Usuario.find()
+            .then(respuesta => res.json({success:true, respuesta:respuesta}))
+        })
+        
         .catch((error) => res.json({success:false, response:error.message}))
     },
     editarUsuario:(req, res) =>{

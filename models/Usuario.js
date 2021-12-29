@@ -8,6 +8,7 @@ const usuarioSchema = new mongoose.Schema({
     foto:{type: String, required:true},
     peliculasLikeadas:{type:Array},
     google:{type:Boolean, default:false},
+    rol: {type:String, default:'usuario'}
 })
 
 const Usuario = mongoose.model('usuario',usuarioSchema)
