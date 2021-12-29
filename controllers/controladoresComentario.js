@@ -2,11 +2,12 @@ const Comentario = require('../models/Comentario')
 
 const controladoresComentario = {
     agregarNuevoComentario: (req, res) => {
-        const { comentario, idPelicula, idUsuario } = req.body
+        const { comentario,idPelicula,comentaryPhoto, idUsuario } = req.body
         const nuevoComentario = new Comentario(
             {
                 comentario,
                 idPelicula,
+                comentaryPhoto,
                 idUsuario
 
             })
@@ -21,8 +22,10 @@ const controladoresComentario = {
      getCommentForMovies: async function (req, res) {
          let comentario
          const id = req.params.id
+     
+
          try {
-             comentario = await Comentario.findOne({ idPelicula: id })
+             comentario = await Comentario.find({ idPelicula: id })
 
          } catch (error) {
              console.log(error)
@@ -35,9 +38,8 @@ const controladoresComentario = {
         let id = req.params.id
         let comentario = req.body
         let actualizado
-
         try {
-            actualizado = await Comentario.findOneAndUpdate({ idUsuarioid: id }, comentario, { new: true })
+            actualizado = await Comentario.findOneAndUpdate({ _id: id }, comentario, { new: true })
        
         } catch (error) {
             console.log(error)
@@ -45,11 +47,13 @@ const controladoresComentario = {
         res.json({ success: actualizado ? true : false })
 
     },
+
+
     deleteComment: async (req, res) => {
         const id = req.params.id
         let comentario
         try {
-            await Comentario.findOneAndDelete({ idUsuarioid: id })
+            await Comentario.findOneAndDelete({ _id: id })
             comentario = await Comentario.find()
 
         } catch (error) {
@@ -64,7 +68,7 @@ const controladoresComentario = {
         Comentario.findOne({ _id: req.params.id })
             .then((comentario) => {
                
-                if (comentario.likes.includes(idUser.idUser)) {
+                if (comentario.likes.includes(idUser.idUser  )) {
                  
                     Comentario.findOneAndUpdate({ _id: req.params.id }, { $pull: { likes: idUser.idUser} }, { new: true })
                     .then((newComment) => res.json({ success: true, response: newComment.likes }))

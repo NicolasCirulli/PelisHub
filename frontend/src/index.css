@@ -176,7 +176,59 @@ body {
 
 /* FIN REGISTRO */
 
-/* FIN REGISTRO */
+
+/* CSS BUTTON "Volver a Peliculas" */
+
+.volverPelicula{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.volverPelicula a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.volverPelicula a:before,
+.volverPelicula a:after{
+  position: absolute;
+  content: "VOLVER";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid white;
+  background-color: black;
+  margin: 5%;
+}
+.volverPelicula a:before{
+  color: rgba(255, 255, 255, 0.884);
+  background: black;
+  transform: rotateY(0deg) translateZ(25px);
+  border: 1px solid white;
+  border-radius: 0.1rem;
+}
+.volverPelicula a:after{
+  color: #551311;
+  font-weight: bold;
+  transform: rotateX(90deg) translateZ(25px);
+  letter-spacing: 1px;  
+}
+.volverPelicula a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+/* FIN CSS BUTTON "Volver a Peliculas" */
+
 
 /* -------------- */
 /* FICHA PELICULA */
@@ -209,6 +261,7 @@ body {
 }
 .parrafo {
   margin-bottom: 10px;
+  margin-left: 10px;
 }
 .negrita {
   font-weight: bold;
@@ -343,7 +396,7 @@ span {
 }
 .cabecera-usuario img {
   width: 11vw;
-  height: auto;
+  height: 11vw;
   border-radius: 50%;
 }
 .datos-usuario {
@@ -351,7 +404,7 @@ span {
   font-size: small;
 }
 h6 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 .listado-favoritas {
   display: flex;
@@ -367,7 +420,7 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border:rgb(160, 159, 159) solid 1px;
+  /* border:rgb(160, 159, 159) solid 1px; */
   margin: 5px;
   font-size: small;
 }
@@ -467,5 +520,3 @@ border: none;
 }
  
 /* FIN DE ESTILOS PELICULAS */
-
-

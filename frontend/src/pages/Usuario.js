@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 import CardFavorita from "../components/CardFavorita/CardFavorita"
 
 
-
-const Usuario = () => {
+const Usuario = (props) => {
     
     const [peliculas, setPeliculas] = useState([])
+    const [shown, setShown] = useState(false)
 
     const fetchearPorTendencia = async () => {
           try {
@@ -26,8 +26,20 @@ const Usuario = () => {
     }
 
     useEffect(() => {
+        setShown(false)
         fetchearPorTendencia()
-    },[])  
+    },[props.render])  
+
+    /* const editData = (id, comentario) => {
+        dispatch(comentaryAction.editarComentario(id, comentario))
+            .then((res) => {
+
+                dispatch(comentaryAction.obtenerComentarios(peliculaId))
+                setRenderComments(!renderComments)
+
+            })
+            .catch((error) => console.log(error))
+    } */
 
     console.log('estos son las peliculas:',peliculas)
 
@@ -36,17 +48,40 @@ const Usuario = () => {
             <div className="main-ficha">
             
                 <h1 className="light-text">Vista Usuario</h1>
-                <div className="cabecera-usuario">
-                    <img src="../../assets/user.png" alt="foto user"/>
-                    <div className="datos-usuario">
+                {
+                    props.usuario && (props.usuario.google!==true)
+                    ?
+                        <div className="cabecera-usuario">
+                            {
+                                props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
+                                : <img src="../../assets/user.png" alt="foto user"/>
+                            }
+                            <div className="datos-usuario">
 
-                        <h6 className="light-text negrita">Datos Usuario</h6>
-                        <p className="parrafo light-text"><span className="negrita">Nombre:</span>User 1</p>
-                        <p className="parrafo light-text"><span className="negrita">Apellido:</span>User 2</p>
-                        <p className="parrafo light-text"><span className="negrita">Password:</span>XXXXX</p>
-                        
-                    </div>
-                </div>
+                                <h6 className="light-text negrita">Datos Usuario</h6>
+                                <p className="parrafo light-text"><span className="negrita">Nombre:</span>{props.usuario.nombre}</p>
+                                <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
+                                <p className="parrafo light-text"><span className="negrita">Contraseña:</span>{props.usuario.contrasenia}</p>
+                                
+                            </div>
+                        </div>
+                    :
+                        <div className="cabecera-usuario">
+                            {
+                                props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
+                                : <img src="../../assets/user.png" alt="foto user"/>
+                            }
+                            <div className="datos-usuario">
+
+                                <h6 className="light-text negrita">Datos Usuario</h6>
+                                <p className="parrafo light-text"><span className="negrita">Nombre:</span>{props.usuario.nombre}</p>
+                                <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
+                                <p className="parrafo light-text"><span className="negrita">Contraseña:</span>{props.usuario.contrasenia}</p>
+                                
+                            </div>
+                        </div>
+
+                }
 
                 <h3 className="negrita light-text">Mi Lista de Favoritas</h3>
 
@@ -70,4 +105,12 @@ const Usuario = () => {
             </div>
         )  
 }
-export default Usuario
+const mapDispatchToProps = {
+}
+const mapStateToProps = (state) => {
+    return {
+        usuario: state.usuarioReducer,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Usuario)

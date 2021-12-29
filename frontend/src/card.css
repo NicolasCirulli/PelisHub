@@ -1,0 +1,50 @@
+.img-tarjeta{
+    height: auto;
+    width: auto;
+
+
+}
+.tarjeta{
+    height: 250px;
+    background-color: black;
+    color: whitesmoke;
+}
+.container-fluid{
+    /* height: 150vh; */
+}
+.contenedor-tarjeta{
+    margin-top: 5rem;
+    /* height: 100vh; */
+    width: 90%;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-bottom: 5rem;
+}
+.contenedor-tarjeta h2{
+    color: whitesmoke;
+    margin-bottom: 2rem;
+}
+.img-tarjeta{
+    opacity: 0.6;
+    border-radius: 5px;
+}
+
+.img-tarjeta{}
+
+.h3{
+    /* margin-top: 6rem; */
+    margin-left: 20px;
+    /* margin-right: 50px; */
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+    display: flex;
+    width: 90%;
+    color: whitesmoke;
+    opacity: 0.8;
+    font-size: 20px;
+}
+
+.h2{
+    margin-left: 20px;
+}

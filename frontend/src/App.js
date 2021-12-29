@@ -5,6 +5,8 @@ import {useSelector, useDispatch} from 'react-redux'
 
 import usuarioActions from "./redux/actions/usuarioActions";
 
+import ScrollToTop from '../src/components/ScrollToTop';
+
 import NavBarMain from './components/NavBar/NavBar'
 import Footer from './components/Footer/Footer'
 
@@ -30,15 +32,17 @@ function App() {
 
   return (
     <BrowserRouter>
+    <ScrollToTop/>
     <div className="container-fluid">
       <NavBarMain/>
       <Routes>
         <Route path="/" element={<Inicio />}></Route>
-        <Route path="/Peliculas" element={<Peliculas />}></Route>
+        <Route path='/Peliculas' element={<Peliculas />}></Route>
         <Route path='/Peliculas/:id' element={<Ficha />}></Route>
         {!usuario && <Route path="/Registro" element={<Registro />}></Route>}
         {!usuario && <Route path="/IniciarSesion" element={<Loguearse />}></Route>}
         <Route path='*' element={<Inicio />}></Route>
+        <Route path='/Usuario' element={<Usuario />}></Route>
       
       </Routes>
       <Footer/>
