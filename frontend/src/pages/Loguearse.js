@@ -128,7 +128,7 @@ const Loguearse = () => {
             <span></span>
             <span></span>
             <span></span>
-            Loguearse
+            Ingresar
         </Button>
 
 <span className="o-google">o</span>

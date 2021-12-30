@@ -37,8 +37,32 @@ function NavBarMain (props) {
     <Navbar.Collapse id="basic-navbar-nav">
             <Nav.Link as={Link} to='/' className="colorText">Inicio </Nav.Link>
             <Nav.Link as={Link} to='/Peliculas' className="colorText"> Peliculas </Nav.Link>
-            <Nav.Link as={Link} to='/Admin' className="colorText"> Admin </Nav.Link>
-            {!props.foto ? (
+            {props.rol === 'admin' ? 
+             <>
+             <NavDropdown
+               className="texto-usu"
+               title={
+                 <img
+                   src={
+                     props.foto
+                       ? props.foto
+                       : fotoDefault
+                   }
+                   className="foto-usu"
+                   alt="foto-usuario"
+                 />
+               }
+               id="basic-nav-dropdown"
+             >
+             <NavDropdown.Item as={Link} to='/Admin' className="color-admin"> Admin </NavDropdown.Item>
+
+               <NavDropdown.Item as={Link} to='/' onClick={() => { props.desloguearse() }}>
+                   <p className="texto-usu d-flex justify-content-center align-items-center text-info bold-logout">Cerrar sesion <BiLogOut></BiLogOut></p>
+               </NavDropdown.Item>
+             </NavDropdown>
+           </>
+
+             : !props.foto ? (
             <NavDropdown className="navText navIcon" title={imageUsu} id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to='/IniciarSesion'> Iniciar Sesion</NavDropdown.Item>
               <NavDropdown.Item as={Link} to='/Registro'> Registro</NavDropdown.Item>
@@ -67,6 +91,7 @@ function NavBarMain (props) {
               </NavDropdown>
             </>
           )}
+            
     </Navbar.Collapse>
   </Container>
 </Navbar>
@@ -86,6 +111,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => {
   return {
     foto: state.usuarioReducer.foto,
+    rol: state.usuarioReducer.rol
   }
 }
 
