@@ -84,7 +84,7 @@ function NavBarMain (props) {
                 }
                 id="basic-nav-dropdown"
               >
-               <Link to={`/Usuario`} className="no-decoration boton-fav d-flex justify-content-center align-intems-center"><p className="no-decoration boton-fav d-flex justify-content-center align-intems-center">Pefil <AiOutlineUser></AiOutlineUser></p></Link>
+               <Link to={`/Usuario`} className="no-decoration boton-fav d-flex justify-content-center align-intems-center"><p className="no-decoration boton-fav d-flex justify-content-center align-intems-center">Perfil <AiOutlineUser></AiOutlineUser></p></Link>
                 <NavDropdown.Item as={Link} to='/' onClick={() => { props.desloguearse() }}>
                     <p className="texto-usu d-flex justify-content-center align-items-center text-info">Cerrar sesion <BiLogOut></BiLogOut></p>
                 </NavDropdown.Item>

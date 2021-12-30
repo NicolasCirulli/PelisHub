@@ -134,7 +134,7 @@ const Loguearse = () => {
 <span className="o-google">o</span>
 
 <GoogleLogin
-            clientId="1088157262762-4n3b7fopip582vdipdm7i44t6ulpbt1e.apps.googleusercontent.com"
+            clientId="298582516064-s7oh1cgbasqnqd4knigetllfult9pe9a.apps.googleusercontent.com"
             render={(renderProps) => (
               <button onClick={renderProps.onClick} className="btn-google button-send" disabled={renderProps.disabled}>
                 <span></span>
