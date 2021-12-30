@@ -25,7 +25,6 @@ const Footer = () => {
    return (
       <footer className="">
          <Container className="footer">
-            <div className='primeraFooter'>
                <div className='redesSociales'>
                   <div className="img-red">
                      {imgFace}
@@ -44,9 +43,8 @@ const Footer = () => {
                      <Nav.Link as={Link} to='/Registro' className="colorText"> Registro </Nav.Link>
                   </Navbar.Collapse>
             </div>
-                  </div>
                   <div>
-                  <p className="textoFooter">Términos y condiciones Privacy & Policy Contacto</p>
+                  <p className="textoFooter">PELISHUB - © Copyright 2021 - Todos los derechos reservados</p>
                </div>
          </Container>
       </footer>
