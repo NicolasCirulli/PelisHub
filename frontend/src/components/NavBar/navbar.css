@@ -11,6 +11,14 @@
     width: 100%;
 }
 
+.color-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orange;
+    font-weight: bold;
+}
+
 @media (min-width: 1400px) {
 
     .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
@@ -23,6 +31,10 @@
     display: flex;
     align-items: center;
     background-color: black;
+}
+
+.bold-logout {
+    font-weight: bold;
 }
 
 .segundaNav{
