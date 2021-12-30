@@ -65,8 +65,8 @@ const Admin = () => {
 
             <tr>
                 <td><img src={datos.foto} alt='imagen' width='50' height='50'/></td>
-                <td>{datos.nombre}</td>
-                <td>{datos.apellido}</td>
+                <td className="display-none-mobile">{datos.nombre}</td>
+                <td className="display-none-mobile">{datos.apellido}</td>
                 <td>{datos.mail}</td>
                 <td className="box-icono"> <GrUserAdmin onClick={()=> handleAdmin(datos._id,true)}  className="icono-admin" /> </td>
                 <td className="box-icono"> <GrUserAdmin onClick={()=> handleAdmin(datos._id,false)}  className="icono-admin" /> </td>
@@ -101,9 +101,9 @@ const Admin = () => {
             <thead>
               <tr>
                 <th>foto</th>
-                <th>Nombre</th>
-                <th>apellido</th>
-                <th>mail</th>
+                <th className="display-none-mobile">Nombre</th>
+                <th className="display-none-mobile">apellido</th>
+                <th >mail</th>
                 <th>Hacer admin</th>
                 <th>Quitar admin</th>
                 <th>borrar</th>

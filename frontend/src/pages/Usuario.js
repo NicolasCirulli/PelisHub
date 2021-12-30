@@ -23,6 +23,8 @@ const Usuario = (props) => {
     let likeadas = props.usuario.peliculasLikeadas
     console.log(likeadas)
 
+
+
     const fetchearPorId = async (id) => {
           try {
             const res = await axios.get(
@@ -40,14 +42,17 @@ const Usuario = (props) => {
 
     const traerFavoritas = async () => {
         try {
-            let auxiliar = []
-            likeadas.length>0 &&
-            likeadas.map(async (idPelicula) => {
-                let pel = await fetchearPorId(idPelicula)
-                auxiliar.push(pel)
-                /* pelis.push(favorita) */
-            })
-            setPeliculas(auxiliar)
+            
+
+                let auxiliar = []
+                likeadas.length>0 &&
+                likeadas.map( async(idPelicula) => {
+                    let pel = await fetchearPorId(idPelicula)
+                    auxiliar.push(pel)
+                    /* pelis.push(favorita) */
+                })
+                setPeliculas(auxiliar)
+            
 
         }catch(error) {
             console.log(error)
@@ -62,6 +67,12 @@ const Usuario = (props) => {
         setShowApellido(false)
         traerFavoritas()
     },[])  
+
+    
+
+     
+
+
 
 
     const confirmChange = (data) => {
@@ -225,7 +236,7 @@ const Usuario = (props) => {
 
         return (
             <div className="main-ficha">
-                {
+                {   
                     (!props.usuario.google)
                     ?
                         (!shown && !showApellido) ? (
