@@ -15,6 +15,8 @@ const Loguearse = () => {
     position: 'top-end',
     showConfirmButton: false,
     timer: 3000,
+    background: 'black',
+    color: 'white',
     timerProgressBar: true,
     didOpen: toast => {
         toast.addEventListener('mouseenter', Swal.stopTimer)

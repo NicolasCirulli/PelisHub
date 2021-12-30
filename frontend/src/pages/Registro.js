@@ -13,6 +13,8 @@ const Registro = () => {
     position: 'top-end',
     showConfirmButton: false,
     timer: 3000,
+    background: 'black',
+    color: 'white',
     timerProgressBar: true,
     didOpen: toast => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -86,7 +88,7 @@ const Registro = () => {
         console.log(res)
         Alert.fire({
           icon: 'success',
-          title: 'Tu cuenta a sido creada'
+          title: 'Tu cuenta ha sido creada'
         })
       }
       else{

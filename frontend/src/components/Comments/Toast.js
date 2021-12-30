@@ -4,6 +4,8 @@ const toasty = (icon, title) =>{
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
+        background: 'black',
+        color: 'white',
         timer: 3000,
         timerProgressBar: true,
       })
