@@ -147,8 +147,6 @@ body {
 }
 
 .btn-google {
-  width: 13vw;
-  height: 8vh;
   margin: 40px;
   background: black;
   color: white;
@@ -694,3 +692,99 @@ border: none;
 }
  
 /* FIN DE ESTILOS PELICULAS */
+/* MEDIA QUERYS PARA LOG IN Y SIGN IN */
+
+@media (max-width:540px) {
+  .form-container{
+    height: 72vh;
+  }
+  .container-buttons {
+    margin-left: 7vw ;
+  }
+  .mb-5{
+    margin-top: 5vh !important;
+  }
+  .button-send{
+    padding: 2vw 3vh;
+  }
+  footer{
+    display: none;
+  }
+}
+@media (max-width:520px) {
+  .form-container{
+    height: 72vh;
+  }
+  .container-buttons {
+    margin-left: 7vw ;
+  }
+  .mb-5{
+    margin-top: 5vh !important;
+  }
+  .button-send{
+    padding: 2vw 3vh;
+  }
+  div label{
+    display: none;
+  }
+}
+@media (max-width:480px) {
+  .form-container{
+    height: 72.5vh;
+  }
+}
+@media (max-width:450px) {
+  .form-container{
+    height: 76vh;
+  }
+  .container-buttons {
+    margin-left: 9vw ;
+  }
+  .button-send{
+    padding: 1.5vw 2.5vh;
+    margin-right: 4vw !important;
+  }
+  .btn-google {
+    margin-left: 10px !important;
+  }
+}
+@media (max-width:420px) {
+  .form-container{
+    height: 82vh;
+  }
+  .container-fluid{
+    margin-left: 0.1% !important;
+    margin-right: 0.1% !important;
+    width: 100% !important;
+  }
+  .form-container {
+    height: 72.5vh;
+}
+}
+@media (max-width:380px) {
+  .form-container{
+    height: 100%;
+  }
+  .container-fluid{
+    margin-left: 0.1% !important;
+    margin-right: 0.1% !important;
+    width: 100% !important;
+  }
+  .container {
+        padding-left: var(--bs-gutter-x,.0.1rem);
+  }
+}
+
+  @media (min-width:1000px) {
+    .btn-google {
+      width: 13vw;
+      height: 8vh;
+      margin: 40px;
+      background: black;
+      color: white;
+      transition: 0.5s;
+      letter-spacing: 3px;
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+  }
