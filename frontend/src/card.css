@@ -55,14 +55,23 @@
 }
 
 
-@media screen and (max-width:500px){
+@media screen and (max-width:560px){
     .h3{
-       font-size: 12px;
+       font-size: 6px;
+    }
+    h2{
+        margin-top: 1rem;
+    }
+    h2.h2{
+        margin-bottom: 5px;
     }
 }
 @media screen and (max-width:782px){
     .h3{
        font-size: 15px;
+    }
+    h2{
+        margin-top: 1rem;
     }
 }
 @media screen and (max-width:400px){
@@ -75,7 +84,12 @@
     h2 .titulo-destacadas{
        font-size: 1rem;
        margin-top: 10px;
+     
     
+    }
+    h2.h2{
+        font-size: 15px;
+        margin-bottom: 5px;
     }
 }
 
