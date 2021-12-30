@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {Card } from "react-bootstrap";
-import logo from "../CardPeliculas/logo.png"
+import { Card } from "react-bootstrap";
+import logo from "../CardPeliculas/logo.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -30,7 +30,7 @@ function SamplePrevArrow(props) {
 
 const Carruseldos = () => {
   const [peliculas, setPeliculas] = useState([]);
-  console.log(peliculas[0])
+  console.log(peliculas[0]);
 
   useEffect(async () => {
     try {
@@ -80,11 +80,10 @@ const Carruseldos = () => {
       },
     ],
   };
-  
 
   return (
-    <> 
-        <h2 className="titulo-destacadas">Mas destacadas</h2>
+    <>
+      <h2 className="titulo-destacadas">Mas destacadas</h2>
       <div className="contenedor-tarjeta">
         <Slider {...settings}>
           {peliculas.map((img, index) => {
@@ -96,16 +95,14 @@ const Carruseldos = () => {
                     variant="top"
                     src={`https://image.tmdb.org/t/p/w1280/${img.backdrop_path}`}
                   />
-                  <Card.Body className="cards-bodys"></Card.Body>
                 </Card>
                 <div className="descripcion-peli">
-                <h2 className="h2">{img.title}</h2>
-                <h3 className="h3">{img.overview}</h3>
-
+                  <h2 className="h2">{img.title}</h2>
+                  <h3 className="h3">{img.overview}</h3>
                 </div>
               </div>
             );
-        })}
+          })}
         </Slider>
       </div>
     </>

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card} from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Carruselone = () => {
   const [peliculas, setPeliculas] = useState([]);
- 
 
   useEffect(async () => {
     try {
@@ -64,7 +63,6 @@ const Carruselone = () => {
                     variant="top"
                     src={`https://image.tmdb.org/t/p/w300/${img.poster_path}`}
                   />
-                  <Card.Body className="cards-bodys"></Card.Body>
                 </Card>
               </div>
             );
