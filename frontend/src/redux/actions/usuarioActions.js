@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 const Alert = Swal.mixin({
     toast: true,
     position: 'bottom-end',
+    background: 'black',
+    color: 'white',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -62,7 +64,8 @@ const usuarioActions = {
         return (dispatch) => {
             localStorage.clear()
             Alert.fire({
-                title: 'Saliste de sesion',
+                title: 'PelisHub',
+                text: 'Saliste de sesión',
                 icon: 'success'
             })
             dispatch({ type: 'DESLOGUEARSE', payload: {}})
@@ -94,7 +97,6 @@ const usuarioActions = {
                     return respuesta.data
 
                 } else {
-
                     console.log('Esto no resultó.');
                     return respuesta.data
                 }
@@ -106,19 +108,20 @@ const usuarioActions = {
     agregarAFavoritos: (id,idPelicula) => {
         return async(dispatch)=>{
             try{
-
-
                 const respuesta = await axios.put('http://localhost:4000/api/usuario/like/'+id,{idPelicula:idPelicula})
 
                 if(respuesta.data.success){
                     dispatch({ type: 'LOGUEADO', payload: {peliculasLikeadas:respuesta.data.response}})
                 }else{
-                    alert('fallo')
+                    Alert.fire({
+                        title: 'PelisHub',
+                        text: 'Tienes que estar logueado para agregar a tus preferencias',
+                        icon: 'error'
+                    })
                 }
-
-
-
-            }catch(err){console.log(err)}
+            }catch(err){
+                console.log(err)
+            }
         }
     }
 

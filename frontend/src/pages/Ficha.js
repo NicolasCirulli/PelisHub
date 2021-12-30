@@ -18,20 +18,19 @@ const Ficha = (props) => {
     const [videos, setVideos] = useState([]);
     const [favorita,setFavorita] = useState(false);
  
-   const likeadas = useSelector(state => state.usuarioReducer.peliculasLikeadas)
-   const idUsuario = useSelector(state => state.usuarioReducer._id)
+    const likeadas = useSelector(state => state.usuarioReducer.peliculasLikeadas)
+    const idUsuario = useSelector(state => state.usuarioReducer._id)
 
-   useEffect(() => { 
-    likeadas.includes(parameters.id) 
-    ? setFavorita(true)
-    : setFavorita(false)
-   }, [likeadas])
+    useEffect(() => { 
+        likeadas.length>0 &&
+        likeadas.includes(parameters.id) 
+        ? setFavorita(true)
+        : setFavorita(false)
+    }, [likeadas])
 
-   const handleLike = () =>{
-    dispatch(usuarioActions.agregarAFavoritos(idUsuario,parameters.id))
-   }
-
-
+    const handleLike = () =>{
+        dispatch(usuarioActions.agregarAFavoritos(idUsuario,parameters.id))
+    }
 
     const videosPorId = async (id) => {
         if (id > 2) {
@@ -167,8 +166,6 @@ const Ficha = (props) => {
                 <Link style={{margin: '5%'}} to={'/Peliculas'}>
                 <span className="volverPelicula"><a></a></span>
                 </Link>
-
-               
                 
             </div>
         )  
