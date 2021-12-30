@@ -1,15 +1,9 @@
 .footer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color: white;
     align-items: center;
     justify-content: space-between;
-}
-
-.primeraFooter{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 }
 
 .collapseFooter{
@@ -30,11 +24,12 @@
 .redesSociales{
     display: flex;
     flex-direction: row;  
+    margin: 1rem;
 }
 
 .img-red{
-    width: 50px !important;
-    height: 50px !important;
+    width: 50px ;
+    height: 50px ;
 }
 
 .segundaFooter{
@@ -42,11 +37,6 @@
     flex-direction: column;
 }
 
-@media (max-width:500px){
-.textoFooter{
-    font-size: 1rem;
-}
-}
 
 @media (max-width:420px){
     .img-red{

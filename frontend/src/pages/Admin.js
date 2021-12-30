@@ -93,11 +93,11 @@ const Admin = () => {
   return (
     <>
       <div className="prueba">
-        <h2>Panel de admin</h2>
+        <h2 className="titulo-admin">Panel de admin</h2>
         <p>Total de usuarios : {loading && usuarios.length}</p>
 
         <div>
-          <Table striped bordered hover>
+          <Table striped bordered hover className="tabla">
             <thead>
               <tr>
                 <th>foto</th>
