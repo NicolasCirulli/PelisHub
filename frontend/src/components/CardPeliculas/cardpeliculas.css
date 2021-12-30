@@ -36,9 +36,7 @@
 
 @media (max-width:540px){
  .titulo-destacadas{
-   margin-top: 8rem;
+   margin-top: 3rem;
     }
-.contenedor-tarjeta{
-    margin-top: 8rem;
-    }
+
 }

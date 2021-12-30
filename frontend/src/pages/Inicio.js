@@ -67,7 +67,6 @@ const Inicio = () => {
                     variant="top"
                     src={`https://image.tmdb.org/t/p/w300/${img.poster_path}`}
                   />
-                  <Card.Body className="cards-bodys"></Card.Body>
                 </Card>
               </div>
             );
