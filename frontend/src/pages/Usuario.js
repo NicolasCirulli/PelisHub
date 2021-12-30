@@ -13,29 +13,55 @@ import usuarioActions from "../redux/actions/usuarioActions";
 const Usuario = (props) => {
     
     const [peliculas, setPeliculas] = useState([])
+    const [favorita, setFavorita] = useState([])
     const [shown, setShown] = useState(false)
     const [showApellido, setShowApellido] = useState(false)
 
     const inputHandler = useRef()
 
-    const fetchearPorTendencia = async () => {
+    let pelis = []    
+    let likeadas = props.usuario.peliculasLikeadas
+    console.log(likeadas)
+
+    const fetchearPorId = async (id) => {
           try {
             const res = await axios.get(
-              `https://api.themoviedb.org/3/trending/movie/week?api_key=43fd83d3a9756a2f59b0de39480b3bf7&language=es-ES`
+              `https://api.themoviedb.org/3/movie/${id}?api_key=43fd83d3a9756a2f59b0de39480b3bf7&language=es-MX`
             )
-            setPeliculas(res.data.results)
+            console.log(res)
+            setFavorita(res.data)
+
+            return res.data
 
           } catch (err) {
-            setPeliculas([])
             console.log(err)
           }
+    }
+
+    const traerFavoritas = async () => {
+        try {
+            let auxiliar = []
+            likeadas.length>0 &&
+            likeadas.map(async (idPelicula) => {
+                let pel = await fetchearPorId(idPelicula)
+                auxiliar.push(pel)
+                /* pelis.push(favorita) */
+            })
+            setPeliculas(auxiliar)
+
+        }catch(error) {
+            console.log(error)
+        }
+        /* console.log('las pelis favoritas son:',peliculas) */
+        /* setFavoritas(pelis)
+        console.log('las favoritas son:',favoritas) */
     }
 
     useEffect(() => {
         setShown(false)
         setShowApellido(false)
-        fetchearPorTendencia()
-    },[props.render])  
+        traerFavoritas()
+    },[])  
 
 
     const confirmChange = (data) => {
@@ -198,10 +224,9 @@ const Usuario = (props) => {
     }
 
         return (
-            
             <div className="main-ficha">
                 {
-                    props.token /* && (props.usuario.google!==true) */
+                    (!props.usuario.google)
                     ?
                         (!shown && !showApellido) ? (
                             <div className="cabecera-usuario">
@@ -280,7 +305,26 @@ const Usuario = (props) => {
                             </div>
                         )
                     :
-                    <p></p>
+                    <div className="cabecera-usuario">
+                        <div className="foto-usuario">
+                            {
+                                props.usuario.foto!=='' ? <img src={props.usuario.foto} alt="foto user"/>
+                                : <img src="../../assets/user.png" alt="foto user"/>
+                            }
+                        </div>
+                        <div className="datos-usuario">
+                            <h3 className="light-text negrita">Datos Usuario</h3>
+                            <div className="fila">
+                                <p className="parrafo light-text"><span className="negrita">Nombre:</span>{props.usuario.nombre}</p>
+                            </div>
+                            <div className="fila">
+                                <p className="parrafo light-text"><span className="negrita">Apellido:</span>{props.usuario.apellido}</p>
+                            </div>
+                            <div className="fila">
+                                <p className="parrafo light-text"><span className="negrita">Contraseña:</span>* * * * * * * *</p>
+                            </div>
+                        </div>
+                    </div>
                 }
 
                 <h4 className="negrita light-text">Mi Lista de Favoritas</h4>
