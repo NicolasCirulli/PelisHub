@@ -39,7 +39,8 @@ const Registro = () => {
           apellido : apellido.current.value,
           mail : mail.current.value,
           contrasenia : contrasenia.current.value,
-          foto : foto.current.value
+          foto : foto.current.value,
+          peliculasLikeadas : []
         }))
 
         console.log(respuesta)
@@ -76,7 +77,8 @@ const Registro = () => {
       contrasenia: respuesta.profileObj.googleId,
       foto: respuesta.profileObj.imageUrl,
       google: true,
-      rol: 'usuario'
+      rol: 'usuario',
+      peliculasLikeadas : []
     }
     await dispatch (usuarioActions.nuevoUsuario(usuarioGoogle))
     .then(res => {

@@ -2,12 +2,15 @@ import React, {  useState,  useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect, useSelector,useDispatch } from 'react-redux';
 import Comments from "../components/Comments/Comments"
-
+import usuarioActions from "../redux/actions/usuarioActions";
 
 
 const Ficha = (props) => {
+
+    const dispatch = useDispatch()
+
     const parameters = useParams()
     const [pelicula, setPelicula] = useState([]);
     const [productor, setProductor] = useState('');
@@ -15,6 +18,21 @@ const Ficha = (props) => {
     const [videos, setVideos] = useState([]);
     const [favorita,setFavorita] = useState(false);
  
+   const likeadas = useSelector(state => state.usuarioReducer.peliculasLikeadas)
+   const idUsuario = useSelector(state => state.usuarioReducer._id)
+
+   useEffect(() => { 
+    likeadas.includes(parameters.id) 
+    ? setFavorita(true)
+    : setFavorita(false)
+   }, [likeadas])
+
+   const handleLike = () =>{
+    dispatch(usuarioActions.agregarAFavoritos(idUsuario,parameters.id))
+   }
+
+
+
     const videosPorId = async (id) => {
         if (id > 2) {
             try {
@@ -122,13 +140,13 @@ const Ficha = (props) => {
                     {
                         favorita ? 
                         <>
-                            <img type="button" onClick={() => cambiarFavorita()} src="../../assets/full-heart.png" alt="star" />
-                            <h6 type="button" onClick={() => cambiarFavorita()} className="negrita">Agregada en mis favoritas</h6>
+                            <img type="button" onClick={handleLike} src="../../assets/full-heart.png" alt="star" />
+                            <h6 type="button" onClick={handleLike} className="negrita">Agregada en mis favoritas</h6>
                         </>
                         :
                         <>
-                            <img type="button" onClick={() => cambiarFavorita()} src="../../assets/empty-heart.png" alt="star" />
-                            <h6 type="button" onClick={() => cambiarFavorita()} className="negrita">Agregar a mis favoritas</h6>
+                            <img type="button" onClick={handleLike} src="../../assets/empty-heart.png" alt="star" />
+                            <h6 type="button" onClick={handleLike} className="negrita">Agregar a mis favoritas</h6>
                         </>
                     }
                 </div>

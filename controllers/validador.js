@@ -20,7 +20,8 @@ const validador = (req, res, next) => {
             'string.min': 'Introduzca una direccion valida'
         }),
         google:joi.boolean(),
-        rol:joi.string()
+        rol:joi.string(),
+        peliculasLikeadas:joi.array(),
     })
 
     const verification = schema.validate(req.body, {abortEarly: false})

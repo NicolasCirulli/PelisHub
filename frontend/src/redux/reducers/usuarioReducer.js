@@ -6,7 +6,8 @@ const initialState =  {
     _id: false,
     apellido: false,
     google: false,
-    rol: false
+    rol: false,
+    peliculasLikeadas: []
 }
 
 const usuarioReducer = (state = initialState, action) => {

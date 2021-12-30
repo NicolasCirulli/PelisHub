@@ -6,7 +6,7 @@ const usuarioSchema = new mongoose.Schema({
     mail:{type: String, required:true},
     contrasenia:{type: String, required:true},
     foto:{type: String, required:true},
-    peliculasLikeadas:{type:Array},
+    peliculasLikeadas:{type:Array,default:[]},
     google:{type:Boolean, default:false},
     rol: {type:String, default:'usuario'}
 })

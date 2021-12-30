@@ -77,7 +77,7 @@ const usuarioActions = {
             }
         })
         console.log(respuesta)
-            dispatch({type:"LOGUEADO", payload:{token, nombre:respuesta.data.response.nombre, foto: respuesta.data.response.foto, _id:respuesta.data.response._id, rol:respuesta.data.response.rol}})
+            dispatch({type:"LOGUEADO", payload:{token, nombre:respuesta.data.response.nombre, foto: respuesta.data.response.foto, _id:respuesta.data.response._id, rol:respuesta.data.response.rol, apellido: respuesta.data.response.apellido, peliculasLikeadas: respuesta.data.response.peliculasLikeadas}})
             }catch(error) {
               console.log(error);
             }
@@ -101,6 +101,24 @@ const usuarioActions = {
             } catch(err) {
                 console.log(err);
             }
+        }
+    },
+    agregarAFavoritos: (id,idPelicula) => {
+        return async(dispatch)=>{
+            try{
+
+
+                const respuesta = await axios.put('http://localhost:4000/api/usuario/like/'+id,{idPelicula:idPelicula})
+
+                if(respuesta.data.success){
+                    dispatch({ type: 'LOGUEADO', payload: {peliculasLikeadas:respuesta.data.response}})
+                }else{
+                    alert('fallo')
+                }
+
+
+
+            }catch(err){console.log(err)}
         }
     }
 

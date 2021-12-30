@@ -10,7 +10,7 @@ const controladoresUsuario = {
         try{
            const usuarios = await Usuario.find()
            usuarios.map( usuario =>{
-              return respuesta.push({nombre:usuario.nombre, apellido:usuario.apellido, mail:usuario.mail, foto:usuario.foto, _id:usuario._id, rol:usuario.rol })
+              return respuesta.push({nombre:usuario.nombre, apellido:usuario.apellido, mail:usuario.mail, foto:usuario.foto, _id:usuario._id, rol:usuario.rol, google: usuario.google })
             })
             res.json({success: true, response: respuesta})
         }catch(error){
@@ -29,7 +29,7 @@ const controladoresUsuario = {
                 nuevoUsuario.save()
                 .then((nuevoUsuario) =>{
                     const token = jwt.sign({...nuevoUsuario}, process.env.SECRETKEY)
-                    res.json({success:true, response:{nombre:nuevoUsuario.nombre, foto:nuevoUsuario.foto, token, _id:nuevoUsuario._id, apellido:nuevoUsuario.apellido, contrasenia:nuevoUsuario.contrasenia, rol:nuevoUsuario.rol}, error:null})
+                    res.json({success:true, response:{nombre:nuevoUsuario.nombre, foto:nuevoUsuario.foto, token, _id:nuevoUsuario._id, apellido:nuevoUsuario.apellido, contrasenia:nuevoUsuario.contrasenia, rol:nuevoUsuario.rol, peliculasLikeadas:nuevoUsuario.peliculasLikeadas,google:nuevoUsuario.google}, error:null})
                 }) 
                 .catch((error) => res.json({success:false, response:error}))
             }
@@ -49,7 +49,7 @@ const controladoresUsuario = {
                 let correctPass = bcryptjs.compareSync(contrasenia, usuario.contrasenia)
                 if(!correctPass) res.json({success:false, error:[{message:'Correo o contraseña incorrectas'}]})
                 const token = jwt.sign({...usuario}, process.env.SECRETKEY)
-                res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id, apellido:usuario.apellido, contrasenia:usuario.contrasenia,rol:usuario.rol}})
+                res.json({ success:true, response:{token, nombre:usuario.nombre, foto:usuario.foto,  _id:usuario._id, apellido:usuario.apellido, contrasenia:usuario.contrasenia,rol:usuario.rol,peliculasLikeadas:usuario.peliculasLikeadas, google:usuario.google}})
             })
             .catch ((error) => res.json({success:false, error:error.message}))
         }catch(err){
@@ -84,7 +84,26 @@ const controladoresUsuario = {
         }
     },
     verifyToken : (req, res) => {
-        res.json({succes:true, response:{nombre: req.user.nombre, foto:req.user.foto, _id:req.user._id, rol:req.user.rol}})
+        res.json({succes:true, response:{apellido:req.user.apellido, nombre: req.user.nombre, foto:req.user.foto, _id:req.user._id, rol:req.user.rol, peliculasLikeadas:req.user.peliculasLikeadas,google: req.user.google}})
+    },
+    agregarAFavoritos: (req, res) => {
+        let {idPelicula} = req.body
+        Usuario.findOne({ _id: req.params.id })
+            .then((usuario) => {
+              
+                if (usuario.peliculasLikeadas.includes(idPelicula)) {
+                Usuario.findOneAndUpdate({ _id: req.params.id }, { $pull: { peliculasLikeadas: idPelicula} }, { new: true })
+                .then((usuarioActualizado) => res.json({ success: true, response: usuarioActualizado.peliculasLikeadas }))
+                .catch((error) => console.log(error))
+            }
+            else {
+ 
+                    Usuario.findOneAndUpdate({ _id: req.params.id }, { $push: { peliculasLikeadas: idPelicula} }, { new: true })
+                        .then((usuarioActualizado) => res.json({ success: true, response: usuarioActualizado.peliculasLikeadas }))
+                        .catch((error) => console.log(error))
+                }
+            })
+        .catch((error) => res.json({ success: false, response: error }))
     }
 }
 
