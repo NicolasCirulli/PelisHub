@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import './card.css';
+import './components/Comments/comentario.css'
 import App from './App';
 import '../src/components/NavBar/navbar.css'
 import '../src/components/Footer/footer.css'
-
+import '../src/components/CardPeliculas/cardpeliculas.css'
+import './pages/admin.css'
 
 // redux 
 

@@ -1,0 +1,101 @@
+.img-tarjeta{
+    height: auto;
+    width: auto;
+
+
+}
+.tarjeta{
+    height: auto;
+    background-color: black;
+    color: whitesmoke;
+}
+.container-fluid{
+    margin-left: 5%;
+    margin-right: 10%;
+    width: 90%;
+    
+}
+.contenedor-tarjeta{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.contenedor-tarjeta h2{
+    color: whitesmoke;
+    margin-bottom: 2rem;
+   
+}
+.img-tarjeta{
+    opacity: 0.6;
+    border-radius: 5px;
+ 
+
+}
+.img-tarjeta2{
+    opacity: 0.6;
+    border-radius: 5px;
+    box-shadow: 2px 3px 10px rgb(192, 188, 188);
+
+}
+
+
+.h3{
+
+    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: start;
+    display: flex;
+    width: 90%;
+    color: rgba(245, 245, 245, 0.657);
+    opacity: 0.8;
+    font-size: 20px;
+  
+}
+
+
+@media screen and (max-width:560px){
+    .h3{
+       font-size: 6px;
+    }
+    h2{
+        margin-top: 1rem;
+    }
+    h2.h2{
+        margin-bottom: 5px;
+    }
+}
+@media screen and (max-width:782px){
+    .h3{
+       font-size: 15px;
+    }
+    h2{
+        margin-top: 1rem;
+    }
+}
+@media screen and (max-width:400px){
+    .h3{
+       font-size: 10px;
+       margin: 5px;
+    }
+}
+@media screen and (max-width:400px){
+    h2 .titulo-destacadas{
+       font-size: 1rem;
+       margin-top: 10px;
+     
+    
+    }
+    h2.h2{
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+}
+
+
+
+.h2{
+    margin-left: 20px;
+    color: whitesmoke;
+}

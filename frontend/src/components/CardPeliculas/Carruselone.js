@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Carruselone from "../components/CardPeliculas/Carruselone";
-import Carruseldos from "../components/CardPeliculas/Carruseldos";
-import {Card} from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Inicio = () => {
+const Carruselone = () => {
   const [peliculas, setPeliculas] = useState([]);
- 
 
   useEffect(async () => {
     try {
       const res = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=43fd83d3a9756a2f59b0de39480b3bf7&language=es-ES&page=1"
+        "https://api.themoviedb.org/3/discover/movie?api_key=43fd83d3a9756a2f59b0de39480b3bf7&language=es-ES&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=free"
       );
       setPeliculas(res.data.results);
     } catch (error) {
@@ -31,7 +28,7 @@ const Inicio = () => {
     rows: 1,
     slidesPerRow: 1,
     autoplay: true,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 8000,
     dots: false,
     pauseOnHover: false,
     responsive: [
@@ -54,9 +51,8 @@ const Inicio = () => {
 
   return (
     <>
-            <Carruseldos />
       <div className="contenedor-tarjeta">
-        <h2>Mas vistas de la semana</h2>
+        <h2>Recomendadas</h2>
         <Slider {...settings}>
           {peliculas.map((img, index) => {
             return (
@@ -73,9 +69,8 @@ const Inicio = () => {
           })}
         </Slider>
       </div>
-          <Carruselone />
     </>
   );
 };
 
-export default Inicio;
+export default Carruselone;

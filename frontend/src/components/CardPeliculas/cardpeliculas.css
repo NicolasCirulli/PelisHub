@@ -1,0 +1,42 @@
+.card-pelis{
+    width: 20rem;
+    height: 17rem;
+    margin: 1rem;
+    background-color: white;
+    border-radius: none;
+}
+
+.tarjeta-1{
+    position: relative;
+}
+
+.descripcion-peli{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 2rem;
+}
+
+.tituloPelicula{
+    display: flex;
+    justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: bold;
+}
+
+:hover .tituloPelicula{
+    color: black;
+}
+
+.titulo-destacadas{
+    margin-top: 5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+@media (max-width:540px){
+ .titulo-destacadas{
+   margin-top: 3rem;
+    }
+
+}

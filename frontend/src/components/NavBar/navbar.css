@@ -1,26 +1,63 @@
  .colorText{
      color: white !important;
+     font-size: large;
  }
 
  #basic-nav-dropdown{
     color: white;
 }
 
-#responsive-navbar-nav{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    flex-basis: 0% !important;
+.nav-container {
+    width: 100%;
 }
+
+.color-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orange;
+    font-weight: bold;
+}
+
+@media (min-width: 1400px) {
+
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 100%;
+    }
+}
+
 
 .colorBgNav{
     display: flex;
     align-items: center;
-    flex-direction: row;
+    background-color: black;
+}
+
+.bold-logout {
+    font-weight: bold;
 }
 
 .segundaNav{
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.foto-usu{
+    width: 3rem;
+  height: 3rem;
+  border-radius: 50%; 
+  object-fit: cover;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.navbar-light .navbar-toggler {
+    background-color: rgba(255, 166, 0, 0.801);
+  }
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-collapse {
+        justify-content: space-around;
+    }
 }

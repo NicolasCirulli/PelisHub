@@ -2,9 +2,8 @@ html *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: black;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -14,3 +13,706 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background-color: black;
+  margin-top: 8vh;
+}
+
+@media (max-width: 819px){
+  body {
+    margin-top: 15vh;
+  }
+}
+
+/* CSS REGISTRO */
+
+.form-container {
+  height: 100vh;
+  justify-content:center;
+  align-items:center;
+}
+
+.form-control {
+  border-radius: none!important;
+}
+
+.button-send{
+  position: relative;
+  display: inline-block;
+  padding: 25px 30px;
+  margin: 40px 0;
+  color: rgb(253, 192, 255);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 4px;
+  overflow: hidden;
+  margin-right: 50px;
+  border: none !important;
+}
+.button-send:hover{
+  background: rgb(253, 192, 255);
+  color: #050801;
+  box-shadow: 0 0 5px rgba(253, 192, 255, 0.397),
+              0 0 25px rgba(253, 192, 255, 0.513),
+              0 0 50px rgba(253, 192, 255, 0.397),
+              0 0 200px rgba(253, 192, 255, 0.287);
+   -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+   border: none;
+}
+.button-send:nth-child(1){
+  filter: hue-rotate(270deg);
+}
+.button-send:nth-child(2){
+  filter: hue-rotate(110deg);
+}
+.button-send span{
+  position: absolute;
+  display: block;
+}
+.button-send span:nth-child(1){
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,rgb(253, 192, 255));
+  animation: animate1 1s linear infinite;
+}
+@keyframes animate1{
+  0%{
+      left: -100%;
+  }
+  50%,100%{
+      left: 100%;
+  }
+}
+.button-send span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,rgb(253, 192, 255));
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2{
+  0%{
+      top: -100%;
+  }
+  50%,100%{
+      top: 100%;
+  }
+}
+.button-send span:nth-child(3){
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,rgb(253, 192, 255));
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.50s;
+}
+@keyframes animate3{
+  0%{
+      right: -100%;
+  }
+  50%,100%{
+      right: 100%;
+  }
+}
+
+
+.button-send span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,rgb(253, 192, 255));
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4{
+  0%{
+      bottom: -100%;
+  }
+  50%,100%{
+      bottom: 100%;
+  }
+}
+
+.btn-primary {
+  background-color: black;
+  border-color:black
+}
+
+.btn-google {
+  width: 13vw;
+  height: 8vh;
+  margin: 40px;
+  background: black;
+  color: white;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  overflow: hidden;
+  text-transform: uppercase;
+}
+
+.btn-google:hover {
+  background: rgb(253, 192, 255);
+  color: #050801;
+  box-shadow: 0 0 5px rgba(253, 192, 255, 0.397),
+              0 0 25px rgba(253, 192, 255, 0.513),
+              0 0 50px rgba(253, 192, 255, 0.397),
+              0 0 200px rgba(253, 192, 255, 0.287);
+   -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+   border: none;
+}
+
+.btn-google:nth-child(1){
+  filter: hue-rotate(270deg);
+}
+.btn-google:nth-child(2){
+  filter: hue-rotate(110deg);
+}
+.btn-google span{
+  position: absolute;
+  display: block;
+}
+.btn-google span:nth-child(1){
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,rgb(253, 192, 255));
+  animation: animate1 1s linear infinite;
+}
+@keyframes animate1{
+  0%{
+      left: -100%;
+  }
+  50%,100%{
+      left: 100%;
+  }
+}
+.btn-google span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,rgb(253, 192, 255));
+  animation: animate2 1s linear infinite;
+  animation-delay: 0.25s;
+}
+@keyframes animate2{
+  0%{
+      top: -100%;
+  }
+  50%,100%{
+      top: 100%;
+  }
+}
+.btn-google span:nth-child(3){
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,rgb(253, 192, 255));
+  animation: animate3 1s linear infinite;
+  animation-delay: 0.50s;
+}
+@keyframes animate3{
+  0%{
+      right: -100%;
+  }
+  50%,100%{
+      right: 100%;
+  }
+}
+
+
+.btn-google span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,rgb(253, 192, 255));
+  animation: animate4 1s linear infinite;
+  animation-delay: 0.75s;
+}
+@keyframes animate4{
+  0%{
+      bottom: -100%;
+  }
+  50%,100%{
+      bottom: 100%;
+  }
+}
+
+
+.o-google {
+  color: white;
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-buttons {
+  height:auto;
+  display:flex;
+  justify-content: center;
+}
+
+.form-control {
+  border-radius: 0.1rem;
+}
+
+/* FIN REGISTRO */
+
+
+/* CSS BUTTON "Volver a Peliculas" */
+
+.volverPelicula{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.volverPelicula a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.volverPelicula a:before,
+.volverPelicula a:after{
+  position: absolute;
+  content: "VOLVER";
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid white;
+  background-color: black;
+  margin: 5%;
+}
+.volverPelicula a:before{
+  color: rgba(255, 255, 255, 0.884);
+  background: black;
+  transform: rotateY(0deg) translateZ(25px);
+  border: 1px solid white;
+  border-radius: 0.1rem;
+}
+.volverPelicula a:after{
+  color: #551311;
+  font-weight: bold;
+  transform: rotateX(90deg) translateZ(25px);
+  letter-spacing: 1px;  
+}
+.volverPelicula a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+/* FIN CSS BUTTON "Volver a Peliculas" */
+
+
+/* -------------- */
+/* FICHA PELICULA */
+/* -------------- */
+.main-ficha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.light-text {
+  color: #fff;
+}
+.warning-text {
+  color: #ffc400;
+}
+.cabecera {
+  width: 80vw;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.cabecera img {
+  width: 25vw;
+  height: auto;
+  object-fit: cover;
+}
+.datos-ficha {
+  padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+}
+
+.h1-pelicula {
+  color: papayawhip;
+  margin: 5%;
+  letter-spacing: 1.5px;
+}
+
+.trailer-title {
+  color: papayawhip;
+  letter-spacing: 1px;
+  margin: 4%;
+}
+
+h6 {
+  margin-bottom: 10px;
+}
+.parrafo {
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+h4.light-text.negrita {
+  color: #ffc400;
+}
+
+span.negrita {
+  font-weight: bold;
+  color: orange;
+}
+iframe {
+  width: 50vw;
+  height: 50vh;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.rating {
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.rating img {
+  width: 4vw;
+  height: auto;
+}
+span {
+  margin-right: 5px;
+}
+
+@media (max-width: 700px){
+  .cabecera img{
+    width: 60%;
+  }
+  .cabecera{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/*-----------------------*/
+/*   ESTILOS  COMMENTS   */
+/*-----------------------*/
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 80vw;
+  height: 29vh;
+  background-color: black; 
+  color: #fff;
+  border-radius: 8px;
+  overflow-y: scroll;
+  margin-top: 20px;
+}
+.onecomment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 3px;
+  margin-bottom: 1px;
+  width: 99%;
+  background-color: rgb(68, 68, 68);
+  height: 10vh;
+  border-radius: 5px;
+}
+.commentpic {
+  background-color: rgb(68, 68, 68);
+}
+.commentpic img {
+  height: 7vh;
+  width: 7vh;
+  background-color: rgb(68, 68, 68);
+  margin: 5px;
+  border-radius: 50%;
+}
+.nombreycomment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  
+  height: 8vh;
+  width: 85%;
+  background-color: rgb(160, 159, 159);
+  
+  margin: 3px;
+  border-radius: 5px;
+}
+.nombreycomment p {
+  background-color: rgb(160, 159, 159);
+  color: black;
+}
+.botones {
+  display: flex;
+  flex-direction: row;
+  
+  margin: 3px;
+  height: 5vh;
+}
+.button-comment {
+  height: 5vh;
+  width: 5vh;
+  margin-right: 2px;
+}
+.makecomment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  width: 80vw;
+  height: 10vh;
+  background-color: rgb(68, 68, 68);
+  color: #fff;
+
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.btn-makecomment {
+  height: 8.5vh;
+  font-size: 0.8rem;
+  margin: 4px;
+  border-radius: 5px;
+}
+.writecomment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 9vh;
+  width: 86%;
+  background-color: rgb(179, 178, 178);
+  color: black;
+  margin: 3px;
+  border-radius: 5px;
+}
+/*-----------------------*/
+/* ESTILOS VISTA USUARIO */
+/*-----------------------*/
+.cabecera-usuario {
+  width: 80vw;
+  height: 20vh;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.foto-usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: x-small;
+}
+.foto-usuario img{
+  width: 11vw;
+  height: 11vw;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 20px;
+  object-fit: cover;
+  object-position: center;
+}
+.datos-usuario {
+  padding-left: 30px;
+  font-size: small;
+}
+.fila {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.fila input {
+  height: 19.5px;
+}
+.edit-data {
+  background-color: rgb(129, 231, 223);
+}
+h3 {
+  margin-bottom: 15px;
+}
+h4 {
+  margin-top: 20px;
+}
+.listado-favoritas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-top: 20px;
+}
+.favorita {
+  width: 15vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border:rgb(160, 159, 159) solid 1px; */
+  margin: 5px;
+  font-size: small;
+}
+.favorita img {
+  width: 14.8vw;
+  height: auto;
+}
+.datos-favorita {
+  width: 14.8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.values {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: small;
+}
+.values img {
+  height: 4vh;
+  width: auto;
+}
+/* FIN ESTILOS COMMENTS */
+
+/* ESTILOS PELICULAS */
+
+.titulo-pelis{
+  color: navajowhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6%;
+  letter-spacing:3px;
+  text-transform: uppercase;
+}
+
+.buscar-pelis{
+  display: flex;
+  justify-content: space-around;
+  margin: 4rem;
+}
+
+@media (max-width:760px){
+  .buscar-pelis{
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+  }
+  .input-pelis{
+    min-width: 70%;
+    height: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+.input-pelis{
+  text-align: center;
+  min-width: 50%;
+  padding: 0 1rem;
+  background-color:black;
+  color: white;
+  border: .5px solid rgba(255, 255, 255, 0.801);
+  border-radius: 5px;
+}
+.input-pelis::placeholder{
+  text-align: center;
+}
+
+.input-pelis::placeholder {
+  color: rgba(245, 245, 245, 0.726);
+}
+
+div.card-pelis.card {
+  border: none !important;
+}
+
+.form-pelis{
+  padding: 1rem;
+}
+
+.form-genero{
+  height: 40px;
+  padding: .5rem 1rem;
+  background-color:black;
+  color: white;
+  border-radius: 5px;
+}
+
+.pelisAll{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subtitulo-pelis{
+  text-decoration: none;
+  color: black;
+}
+
+.pasar-pagina{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  color: black !important;
+}
+
+.page-link{
+background-color: black;
+color: white;
+border: none;
+}
+
+.page-item.active .page-link{
+  background-color: white;
+  color: black;
+  border: white;
+}
+
+.boton-fav {
+  text-decoration: none;
+  display: flex;
+  justify-content:center;
+  color: orange;
+  align-items: center;
+}
+
+.boton-fav:hover {
+  color: rgba(255, 166, 0, 0.664);
+}
+
+.text-usu {
+  color: orange;
+}
+ 
+/* FIN DE ESTILOS PELICULAS */

@@ -1,0 +1,42 @@
+.prueba{
+    min-height: 80vh;
+    background: rgb(255, 255, 255);
+    margin-top: 15vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5rem;
+}
+.alto100{
+    height: 100%;
+}
+
+.box-icono{
+    position: relative;
+}
+
+.titulo-admin{
+    margin: 1rem;
+    color:orange
+}
+
+.tabla{
+    width: 100%;
+}
+
+.icono-admin{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    color: rgb(114, 23, 23);
+}
+
+@media (max-width: 850px){
+    .display-none-mobile{
+        display:none;
+    }
+}
